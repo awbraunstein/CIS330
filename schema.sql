@@ -1,25 +1,3 @@
-CREATE TABLE lists
-(
-	owner INTEGER,
-	lid INTEGER,
-       	name VARCHAR(30) NOT NULL,
-       	privacy INTEGER NOT NULL,
-       	PRIMARY KEY(lid),
-	FOREIGN KEY(owner) references users,
-	ON DELETE CASCADE
-)
-
-CREATE TABLE tweets
-(
-	tid INTEGER,
-	uid INTEGER,
-       	tweet_time DATE NOT NULL,
-       	body VARCHAR(140) NOT NULL,
-	PRIMARY KEY(tid),
-	FOREIGN KEY(uid) REFERENCES users,
-	ON DELETE CASCADE
-)              
-     
 CREATE TABLE users 
 (
 	uid INTEGER,
@@ -36,9 +14,31 @@ CREATE TABLE users
 	PRIMARY KEY(uid)
 )  
 
+CREATE TABLE tweets
+(
+	tid INTEGER,
+	uid INTEGER,
+       	tweet_time DATE NOT NULL,
+       	body VARCHAR(140) NOT NULL,
+	PRIMARY KEY(tid),
+	FOREIGN KEY(uid) REFERENCES users,
+	ON DELETE CASCADE
+)                   
+
+CREATE TABLE lists
+(
+	owner INTEGER,
+	lid INTEGER,
+       	name VARCHAR(30) NOT NULL,
+       	privacy INTEGER NOT NULL,
+       	PRIMARY KEY(lid),
+	FOREIGN KEY(owner) references users,
+	ON DELETE CASCADE
+)
+
 CREATE TABLE tags
 (
-	tag VARCHAR(140) NOT NULL,
+	tag VARCHAR(140),
 	tid INTEGER,
 	PRIMARY KEY(tag, tid),
 	FOREIGN KEY(tid) REFERENCES tweets,
@@ -80,3 +80,22 @@ CREATE TABLE mentions
 	ON DELETE CASCADE
 )
 
+CREATE TABLE list_contains
+(
+	lid INTEGER,
+	uid INTEGER,
+	PRIMARY KEY(lid, uid),
+	FOREIGN KEY(lid) REFERENCES lists,
+	FOREIGN KEY(uid) REFERENCES users,
+	ON DELETE CASCADE
+)
+
+CREATE TABLE follows_list
+(
+	uid INTEGER,
+	lid INTEGER,
+	PRIMARY KEY(uid, lid),
+	FOREIGN KEY(uid) REFERENCES users,
+	FOREIGN KEY(lid) REFERENCES lists,
+	ON DELETE CASCADE
+)
