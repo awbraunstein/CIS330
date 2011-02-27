@@ -1,25 +1,82 @@
-create table list
-       (lid integer,
-       name varchar(30),
-       privacy integer,
-       primary key(lid))
-
-create table tweet
-       (tid integer,
-       posttime date,
-       body varchar(140),
-       
-     
-CREATE TABLE user 
+CREATE TABLE lists
 (
-uid VARCHAR(40),
-first_name VARCHAR(40),
-last_name VARCHAR(40),
-webpage VARCHAR(40),
-time_zone INTEGER,
-bio VARCHAR(140),
-privacy INTEGER,
-location VARCHAR(40),
-lang VARCHAR(40),
-email VARCHAR(40)
+	owner INTEGER,
+	lid INTEGER,
+       	name VARCHAR(30) NOT NULL,
+       	privacy INTEGER NOT NULL,
+       	PRIMARY KEY(lid),
+	FOREIGN KEY(owner) references users,
+	ON DELETE CASCADE
+)
+
+CREATE TABLE tweets
+(
+	tid INTEGER,
+	uid INTEGER,
+       	tweet_time DATE NOT NULL,
+       	body VARCHAR(140) NOT NULL,
+	PRIMARY KEY(tid),
+	FOREIGN KEY(uid) REFERENCES users,
+	ON DELETE CASCADE
+)              
+     
+CREATE TABLE users 
+(
+	uid INTEGER,
+	username VARCHAR(40) NOT NULL,
+	first_name VARCHAR(40) NOT NULL,
+	last_name VARCHAR(40) NOT NULL,
+	email VARCHAR(40) NOT NULL
+	privacy INTEGER NOT NULL,
+	webpage VARCHAR(40),
+	time_zone INTEGER,
+	bio VARCHAR(140),
+	location VARCHAR(40),
+	lang VARCHAR(40),
+	PRIMARY KEY(uid)
 )  
+
+CREATE TABLE tags
+(
+	tag VARCHAR(140) NOT NULL,
+	tid INTEGER,
+	PRIMARY KEY(tag, tid),
+	FOREIGN KEY(tid) REFERENCES tweets,
+	ON DELETE CASCADE
+)
+
+
+CREATE TABLE follows
+(
+	follower INTEGER,
+	followee INTEGER,
+	follow_date DATE,
+	PRIMARY KEY(follower, followee),
+	FOREIGN KEY(follower) REFERENCES users,
+	FOREIGN KEY(followee) REFERENCES users,
+	ON DELETE CASCADE
+)
+
+CREATE TABLE messages
+(
+	from INTEGER,
+	to INTEGER,
+	message_time DATE,
+	body VARCHAR(140),
+	subject VARCHAR(20) NOT NULL,
+	PRIMARY KEY(from, to),
+	FOREIGN KEY(from) REFERENCES users,
+	FOREIGN KEY(to) REFERENCES users,
+	ON DELETE CASCADE
+)
+
+CREATE TABLE mentions
+(
+	tid INTEGER,
+	uid INTEGER,
+	PRIMARY KEY(tid, uid),
+	FOREIGN KEY(tid) REFERENCES tweets,
+	FOREIGN KEY(uid) REFERENCES users,
+	ON DELETE CASCADE
+)
+
