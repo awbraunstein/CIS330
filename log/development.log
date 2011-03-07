@@ -1,0 +1,22 @@
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-07 09:48:15 -0500
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-07 09:49:43 -0500
+
+ActionController::RoutingError (uninitialized constant WelcomeController):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-07 09:50:01 -0500
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms)
