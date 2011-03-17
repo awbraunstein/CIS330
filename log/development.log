@@ -926,3 +926,85 @@ Completed 200 OK in 28ms (Views: 16.4ms | ActiveRecord: 0.7ms)
   [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" LIMIT 1
   [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
   [1m[35mTweet Load (0.3ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 1)
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-03-08 17:35:50 -0500
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered users/show.html.erb within layouts/application (131.0ms)
+Completed 200 OK in 1425ms (Views: 951.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-10 23:54:09 -0500
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 127ms (Views: 126.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-11 23:35:09 -0500
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 109ms (Views: 108.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-13 10:43:07 -0400
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 88ms (Views: 85.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-14 18:11:35 -0400
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (21.4ms)
+Completed 200 OK in 82ms (Views: 81.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-17 17:13:47 -0400
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 177ms (Views: 176.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-17 17:13:49 -0400
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 5ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-17 17:13:52 -0400
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-17 17:13:53 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (29.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (189.5ms)
+Completed 200 OK in 362ms (Views: 223.0ms | ActiveRecord: 29.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-03-17 17:13:59 -0400
+  Processing by UsersController#new as HTML
+Rendered users/_form.html.erb (96.0ms)
+Rendered users/new.html.erb within layouts/application (100.3ms)
+Completed 200 OK in 138ms (Views: 115.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-03-17 17:14:03 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Fcw8XrQKd7KwvXmKgS5PsMlF6yj4D7rvvN3AWdWVz28=", "user"=>{"username"=>"themoderata", "firstname"=>"", "lastname"=>"", "email"=>"", "privacy"=>"", "webpage"=>"", "time_zone"=>"", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Create User"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'themoderata') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('')) LIMIT 1[0m
+Rendered users/_form.html.erb (18.7ms)
+Rendered users/new.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 496ms (Views: 25.8ms | ActiveRecord: 0.3ms)

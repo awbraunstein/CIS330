@@ -1,3 +1,15 @@
+# == Schema Information
+# Schema version: 20110307224716
+#
+# Table name: tweets
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  body       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
