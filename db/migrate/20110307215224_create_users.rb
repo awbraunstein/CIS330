@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string :username, :presence => true
+      t.string :username, :presence => true, :uniqueness => true
       t.string :firstname, :presence => true
       t.string :lastname, :presence => true
       t.string :email, :presence => true
