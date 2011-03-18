@@ -1,6 +1,66 @@
-<h1>Editing user</h1>
+<h1>Edit user</h1>
 
-<%= render 'form' %>
+<%= form_for @user, :url => {:action => "update"} do |f| %>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :firstname %><br />
+  <%= f.text_field :firstname %>
+</div>
+<div class="field">
+  <%= f.label :lastname %><br />
+  <%= f.text_field :lastname %>
+</div>
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.text_field :email %>
+</div>
+<div class="field">
+  <%= f.label :password %><br />
+  <%= f.password_field :password %>
+</div>
+<div class="field">
+  <%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %>
+</div>
+<div class="field">
+  <%= f.radio_button :privacy, "0", :checked => true %>
+  <%= f.label :privacy, "Public Tweets" %><br />
+  <%= f.radio_button :privacy, "1" %>
+  <%= f.label :privacy, "Private Tweets" %>
+</div>
+<div class="field">
+  <%= f.label :webpage %><br />
+  <%= f.text_field :webpage %>
+</div>
+<div class="field">
+  <%= time_zone_select :user, :time_zone %>
+</div>
+<div class="field">
+  <%= f.label :bio %><br />
+  <%= text_area_tag :bio, "", :size => "24x6" %>
+</div>
+<div class="field">
+  <%= f.label :location %><br />
+  <%= f.text_field :location %>
+</div>
+<div class="field">
+  <%= f.label :language %><br />
+  <%= f.text_field :language %>
+</div>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="actions">
+  <%= f.submit "update" %>
+</div>
+
+<% end %>
+
