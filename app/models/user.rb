@@ -17,6 +17,7 @@
 #  created_at :datetime
 #  updated_at :datetime
 #
+require 'digest/sha1'
 
 class User < ActiveRecord::Base
   has_many :tweets, :dependent => :destroy
@@ -24,11 +25,19 @@ class User < ActiveRecord::Base
   belongs_to :followers, :class_name => "User"
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
-  attr_accessible :time_zone, :bio, :location, :language, :password
-  validates_presence_of :username, :firstname, :lastname, :email, :privacy, :password
+  attr_accessible :time_zone, :bio, :location, :language
+  validates_presence_of :username, :firstname, :lastname, :email, :privacy
   validates :username, :uniqueness => true
   validates :email, :presence => true,
-  :format =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
-  :uniqueness => {:case_sensitive => false}
+                    :format =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
+                    :uniqueness => {:case_sensitive => false}
+  validates :password, :presence => true,
+                       :confirmation =>true
+
+  attr_accessor :password, :password_confirmation
+  
+  def self.encrypt_password(password)
+    Digest::SHA1.hexdigest(password)
+  end
   
 end
