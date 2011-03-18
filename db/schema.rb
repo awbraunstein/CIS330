@@ -10,11 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110307224716) do
+ActiveRecord::Schema.define(:version => 20110318001222) do
 
   create_table "follows_user", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "follows_id"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "subject",    :null => false
+    t.text     "body",       :null => false
+    t.integer  "from_id",    :null => false
+    t.integer  "to_id",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tweets", :force => true do |t|

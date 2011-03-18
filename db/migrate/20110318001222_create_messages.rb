@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration
       t.string :subject, :null => false
       t.text :body, :null => false
       t.integer :from_id, :null=> false
-      t.integer :to_id, null => false
+      t.integer :to_id, :null => false
 
       t.timestamps
     end
