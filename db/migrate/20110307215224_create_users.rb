@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username, :presence => true, :uniqueness => true
       t.string :firstname, :presence => true
       t.string :lastname, :presence => true
-      t.string :email, :presence => true
+      t.string :email, :presence => true, :uniqueness => true
       t.integer :privacy, :presence => true
       t.string :webpage
       t.integer :time_zone
