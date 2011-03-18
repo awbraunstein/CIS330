@@ -5,8 +5,10 @@ Twitter::Application.routes.draw do
 
   resources :users
 
+  match "register" => "users#new"
+  
   get "home/index"
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
