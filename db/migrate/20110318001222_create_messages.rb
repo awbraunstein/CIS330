@@ -3,8 +3,8 @@ class CreateMessages < ActiveRecord::Migration
     create_table :messages do |t|
       t.string :subject, :null => false
       t.text :body, :null => false
-      t.int :from_id, :null=> false
-      t.int :to_id, null => false
+      t.integer :from_id, :null=> false
+      t.integer :to_id, null => false
 
       t.timestamps
     end
