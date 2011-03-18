@@ -25,8 +25,8 @@ class User < ActiveRecord::Base
   belongs_to :followers, :class_name => "User"
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
-  attr_accessible :time_zone, :bio, :location, :language, :password
-  validates_presence_of :username, :firstname, :lastname, :email, :privacy, :password
+  attr_accessible :time_zone, :bio, :location, :language, :password, :password_confirmation
+  validates_presence_of :username, :firstname, :lastname, :email, :privacy, :password, :password_confirmation
   validates :username, :uniqueness => true
   validates :email, :presence => true,
                     :format =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
