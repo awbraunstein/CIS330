@@ -1,4 +1,6 @@
 Twitter::Application.routes.draw do
+  resources :messages
+
   resources :tweets
 
   resources :users
