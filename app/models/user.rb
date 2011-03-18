@@ -20,8 +20,8 @@
 
 class User < ActiveRecord::Base
   has_many :tweets, :dependent => :destroy
-  has_many :users
-  belongs_to :user
+  has_many :followees, :class_name => "User"
+  belongs_to :followers, :class_name => "User"
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
   attr_accessible :time_zone, :bio, :location, :language
