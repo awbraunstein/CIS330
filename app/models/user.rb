@@ -19,7 +19,8 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :tweets
+  has_many :tweets, :dependent => :destroy
+  has_many :users
   belongs_to :user
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
