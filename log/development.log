@@ -1132,3 +1132,9 @@ SQLite3::SQLException: no such column: users.user_id: SELECT "users".* FROM "use
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
   [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-17 23:29:19 -0400
+  Processing by HomeController#index as HTML
+Rendered home/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 31ms (Views: 30.7ms | ActiveRecord: 0.0ms)
