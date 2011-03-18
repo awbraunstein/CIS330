@@ -26,15 +26,13 @@ class User < ActiveRecord::Base
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
   attr_accessible :time_zone, :bio, :location, :language
-  validates_presence_of :username, :firstname, :lastname, :email, :privacy
+  validates_presence_of :username, :firstname, :lastname, :email, :privacy, :password
   validates :username, :uniqueness => true
   validates :email, :presence => true,
                     :format =>  /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i,
                     :uniqueness => {:case_sensitive => false}
-  validates :password, :presence => true,
-                       :confirmation =>true
+  validates_confirmation_of :password
 
-  attr_accessor :password, :password_confirmation
   
   def self.encrypt_password(password)
     Digest::SHA1.hexdigest(password)

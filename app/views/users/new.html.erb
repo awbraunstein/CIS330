@@ -1,6 +1,17 @@
 <h1>Sign Up</h1>
 
 <%= form_for @user, :url => {:action => "create"} do |f| %>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 <div class="field">
   <%= f.label :username %><br />
   <%= f.text_field :username %>
@@ -19,13 +30,17 @@
 </div>
 <div class="field">
   <%= f.label :password %><br />
-  <%= password_field_tag :password %>
+  <%= f.text_field :password %>
 </div>
 <div class="field">
-  <%= radio_button_tag(:privacy, "0", true) %>
-  <%= label_tag(:privacy, "Public Tweets") %><br />
-  <%= radio_button_tag(:privacy, "1") %>
-  <%= label_tag(:privacy, "Private Tweets") %>
+  <%= f.label :password_confirmation %><br />
+  <%= f.text_field :password_confirmation %>
+</div>
+<div class="field">
+  <%= f.radio_button :privacy, "0", :checked => true %>
+  <%= f.label :privacy, "Public Tweets" %><br />
+  <%= f.radio_button :privacy, "1" %>
+  <%= f.label :privacy, "Private Tweets" %>
 </div>
 <div class="field">
   <%= f.label :webpage %><br />
