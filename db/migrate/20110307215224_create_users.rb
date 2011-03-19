@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, :presence => true, :uniqueness => true
       t.integer :privacy, :presence => true
       t.string :webpage
-      t.integer :time_zone
+      t.string :time_zone
       t.text :bio
       t.string :location
       t.string :language

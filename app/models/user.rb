@@ -10,7 +10,7 @@
 #  email      :string(255)
 #  privacy    :integer
 #  webpage    :string(255)
-#  time_zone  :integer
+#  time_zone  :string
 #  bio        :text
 #  location   :string(255)
 #  language   :string(255)

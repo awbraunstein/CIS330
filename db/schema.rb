@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20110318035821) do
     t.string   "email"
     t.integer  "privacy"
     t.string   "webpage"
-    t.integer  "time_zone"
+    t.string   "time_zone"
     t.text     "bio"
     t.string   "location"
     t.string   "language"
