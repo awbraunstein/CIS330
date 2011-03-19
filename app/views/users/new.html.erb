@@ -47,7 +47,8 @@
   <%= f.text_field :webpage %>
 </div>
 <div class="field">
-  <%= f.time_zone_select :time_zone %>
+  <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones,
+  :default => "Eastern Time (US & Canada)"%>
 </div>
 <div class="field">
   <%= f.label :bio %><br />
