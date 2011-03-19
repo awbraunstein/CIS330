@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
                     :uniqueness => {:case_sensitive => false}
   validates_confirmation_of :password
 
-  attr_accessor :password, :password_confirmation
+  #  attr_accessor :password, :password_confirmation
   #  before_save Digest::SHA1.hexdigest(password)
 
   
