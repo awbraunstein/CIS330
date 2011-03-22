@@ -10,7 +10,7 @@ Twitter::Application.routes.draw do
   match "register" => "users#new"
   match "login" => "sessions#new"
   match "logout" => "sessions#destroy"
-  match ":username" => "Users#show", :as => "user_tweets"
+  match ":username" => "Users#user_page", :as => "user_tweets"
   
   get "home/index"
   

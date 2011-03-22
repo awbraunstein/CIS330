@@ -13,6 +13,6 @@
 class Tweet < ActiveRecord::Base
   belongs_to :user
   
-  attr_accessible :body
+  attr_accessible :body, :user_id
   validates :body, :length => {:maximum => 140}
 end

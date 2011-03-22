@@ -769,3 +769,141 @@ ActiveRecord::RecordNotFound (Couldn't find User without an ID):
 Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
 Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.2ms)
 Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.9ms)
+
+
+Started GET "/tw" for 127.0.0.1 at 2011-03-22 02:07:22 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"username"=>"tw"}
+Completed   in 42ms
+
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  app/controllers/users_controller.rb:16:in `show'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.1ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-03-22 02:07:22 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.4ms)[0m  SELECT "tweets".* FROM "tweets"
+Rendered tweets/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 13ms (Views: 5.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2011-03-22 02:07:24 -0400
+  Processing by TweetsController#new as HTML
+Rendered tweets/_form.html.erb (9.2ms)
+Rendered tweets/new.html.erb within layouts/application (31.6ms)
+Completed 200 OK in 276ms (Views: 243.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-03-22 02:07:28 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1putIuL593mJHdkI09F5e5YYxn8IFt3Lxr0Io85ym4c=", "tweet"=>{"user_id"=>"1", "body"=>"hahahaha"}, "commit"=>"Create Tweet"}
+WARNING: Can't mass-assign protected attributes: user_id
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (NULL, 'hahahaha', '2011-03-22 06:07:28.866451', '2011-03-22 06:07:28.866451')[0m
+Redirected to http://localhost:3000/tweets/1
+Completed 302 Found in 47ms
+
+
+Started GET "/tweets/1" for 127.0.0.1 at 2011-03-22 02:07:28 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1
+Rendered tweets/show.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 74ms (Views: 38.9ms | ActiveRecord: 0.7ms)
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 1)[0m
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-03-22 02:07:48 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+Rendered tweets/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 19ms (Views: 11.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2011-03-22 02:09:47 -0400
+  Processing by TweetsController#new as HTML
+Rendered tweets/_form.html.erb (6.0ms)
+Rendered tweets/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 20ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-03-22 02:09:53 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1putIuL593mJHdkI09F5e5YYxn8IFt3Lxr0Io85ym4c=", "tweet"=>{"user_id"=>"1", "body"=>"blah blah"}, "commit"=>"Create Tweet"}
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (1, 'blah blah', '2011-03-22 06:09:53.716285', '2011-03-22 06:09:53.716285')
+Redirected to http://localhost:3000/tweets/2
+Completed 302 Found in 26ms
+
+
+Started GET "/tweets/2" for 127.0.0.1 at 2011-03-22 02:09:53 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 2) LIMIT 1[0m
+Rendered tweets/show.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 19ms (Views: 10.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-03-22 02:09:55 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.5ms)[0m  SELECT "tweets".* FROM "tweets"
+Rendered tweets/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 19ms (Views: 12.4ms | ActiveRecord: 0.5ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 1)[0m
+
+
+Started GET "/te" for 127.0.0.1 at 2011-03-22 02:10:11 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"username"=>"te"}
+Completed   in 13ms
+
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  app/controllers/users_controller.rb:16:in `show'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.4ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2011-03-22 02:10:11 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"username"=>"test"}
+Completed   in 37ms
+
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  app/controllers/users_controller.rb:16:in `show'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.2ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.0ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2011-03-22 02:10:56 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"test"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'test') LIMIT 1[0m
+Completed   in 22ms
+
+NameError (undefined local variable or method `user' for #<UsersController:0x00000102ab03a8>):
+  app/controllers/users_controller.rb:26:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started GET "/test" for 127.0.0.1 at 2011-03-22 02:11:44 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"test"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'test') LIMIT 1
+Completed   in 66ms
+
+ActionView::MissingTemplate (Missing template users/user_page with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/Users/zach/Documents/Class/cis330/project/app/views"):
+  app/controllers/users_controller.rb:27:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.7ms)
