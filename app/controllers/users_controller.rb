@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def user_page
     @user = User.find_by_username(params[:username])
+    @tweets = @user.tweets
     respond_to do |format|
       format.html # user_page.html.erb
       format.xml  { render :xml => @user }
