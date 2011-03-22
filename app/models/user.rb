@@ -46,5 +46,13 @@ class User < ActiveRecord::Base
   def encrypt(string)
     Digest::SHA1.hexdigest(string)
   end
+
+  def self.authenticate(username, password)
+    user = find_by_username(username)
+    if user.nil?
+      return nil
+    elsif user.password == password
+    end
+  end
   
 end

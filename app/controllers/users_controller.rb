@@ -21,6 +21,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def user_page
+    @user = User.find_by_username(params[:username])
+    respond_to do |format|
+      format.html # user_page.html.erb
+      format.xml  { render :xml => @user }
+    end
+  end
+
+    
+  
   # GET /users/new
   # GET /users/new.xml
   def new

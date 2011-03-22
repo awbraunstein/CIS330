@@ -10,6 +10,7 @@ Twitter::Application.routes.draw do
   match "register" => "users#new"
   match "login" => "sessions#new"
   match "logout" => "sessions#destroy"
+  match ":username" => "Users#show", :as => "user_tweets"
   
   get "home/index"
   
@@ -62,7 +63,7 @@ Twitter::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-root :to => "home#index"
+root :to => "tweets#index"
 
   # See how all your routes lay out with "rake routes"
 
