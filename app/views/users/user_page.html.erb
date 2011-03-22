@@ -6,9 +6,9 @@
 </p>
 <p>
   <b>Tweets:</b>
-  <% @tweets.each do |t| %>
   <ul>
-    <li><%= t %></li>
+    <% @tweets.each do |t| %>
+    <li><%= t.body %></li>
     <% end %>
   </ul>
   
