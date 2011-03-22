@@ -6,7 +6,12 @@
 </p>
 <p>
   <b>Tweets:</b>
-  <%= @user.bio %>
+  <% @tweets.body.each do |t| %>
+  <ul>
+    <li><%= t %></li>
+    <% end %>
+  </ul>
+  
 </p>
 
 
