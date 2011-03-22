@@ -5,7 +5,11 @@ Twitter::Application.routes.draw do
 
   resources :users
 
+  resources :sessions
+  
   match "register" => "users#new"
+  match "login" => "sessions#new"
+  match "logout" => "sessions#destroy"
   
   get "home/index"
   
