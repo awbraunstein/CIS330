@@ -7,12 +7,12 @@ module SessionsHelper
 
   def sign_out
     cookies.delete :user_cookie
+    self.current_user = nil
   end
 
   def signed_in?
     return !current_user.nil?
   end
-
   
   def current_user=(user)
     @current_user ||= User.find_by_id(cookies.signed[:user_cookie])

@@ -2165,3 +2165,337 @@ Started GET "/register" for 127.0.0.1 at 2011-03-31 17:31:50 -0400
   [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
 Rendered users/new.html.erb within layouts/application (56.1ms)
 Completed 200 OK in 78ms (Views: 59.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-31 17:34:35 -0400
+  Processing by SessionsController#destroy as HTML
+Completed   in 4ms
+
+ActionView::MissingTemplate (Missing template sessions/destroy with {:handlers=>[:erb, :rjs, :builder, :rhtml, :rxml], :formats=>[:html], :locale=>[:en, :en]} in view paths "/Users/zach/Documents/Class/cis330/project/app/views"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.7ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-31 17:35:22 -0400
+  Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000home/index
+Completed 302 Found in 0ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-31 17:37:03 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (76.4ms)
+Completed 200 OK in 87ms (Views: 79.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-31 17:38:57 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (140.6ms)
+Completed 200 OK in 153ms (Views: 143.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-31 17:39:00 -0400
+  Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 30ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-31 17:39:01 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.5ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (69.8ms)
+Completed 200 OK in 81ms (Views: 72.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-31 17:39:15 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (69.6ms)
+Completed 200 OK in 80ms (Views: 72.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/register" for 127.0.0.1 at 2011-03-31 17:39:20 -0400
+  Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered users/new.html.erb within layouts/application (53.6ms)
+Completed 200 OK in 75ms (Views: 56.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-03-31 17:39:34 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XsHjo7m21SjEo051Ey8XHGyKE8cFXtTg0VH2rxVEgoc=", "user"=>{"username"=>"newuser", "firstname"=>"hars", "lastname"=>"mar", "email"=>"s@s.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"0", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Sign up"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'newuser') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('s@s.com')) LIMIT 1[0m
+  [1m[35mAREL (28.4ms)[0m  INSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('newuser', 'hars', 'mar', 's@s.com', 0, '', 'Eastern Time (US & Canada)', '', '', '', '2011-03-31 21:39:34.431435', '2011-03-31 21:39:34.431435', 'blah')
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 241ms
+
+
+Started GET "/users/3" for 127.0.0.1 at 2011-03-31 17:39:34 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = '3') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered users/show.html.erb within layouts/application (48.9ms)
+Completed 200 OK in 83ms (Views: 52.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-31 17:39:39 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (54.5ms)
+Completed 200 OK in 73ms (Views: 57.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-31 17:39:49 -0400
+  Processing by SessionsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered sessions/new.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 66ms (Views: 65.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-31 17:39:54 -0400
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XsHjo7m21SjEo051Ey8XHGyKE8cFXtTg0VH2rxVEgoc=", "session"=>{"username"=>"newuser", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'newuser') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 35ms
+
+
+Started GET "/users/3" for 127.0.0.1 at 2011-03-31 17:39:54 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '3') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered users/show.html.erb within layouts/application (40.7ms)
+Completed 200 OK in 71ms (Views: 44.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-31 17:39:59 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered users/index.html.erb within layouts/application (54.3ms)
+Completed 200 OK in 73ms (Views: 57.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-31 17:40:03 -0400
+  Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 24ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-31 17:40:03 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.5ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (42.1ms)
+Completed 200 OK in 82ms (Views: 45.2ms | ActiveRecord: 29.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-31 17:40:07 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (68.6ms)
+Completed 200 OK in 80ms (Views: 72.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2011-03-31 17:40:10 -0400
+  Processing by TweetsController#new as HTML
+Rendered tweets/_form.html.erb (5.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered tweets/new.html.erb within layouts/application (68.2ms)
+Completed 200 OK in 89ms (Views: 80.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-31 17:40:28 -0400
+  Processing by SessionsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered sessions/new.html.erb within layouts/application (56.9ms)
+Completed 200 OK in 62ms (Views: 60.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-03-31 17:40:32 -0400
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XsHjo7m21SjEo051Ey8XHGyKE8cFXtTg0VH2rxVEgoc=", "session"=>{"username"=>"test", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'test') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 66ms
+
+
+Started GET "/users/2" for 127.0.0.1 at 2011-03-31 17:40:32 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '2') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/show.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 75ms (Views: 15.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-31 17:40:41 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/index.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 42ms (Views: 26.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-03-31 17:42:56 -0400
+  Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered sessions/new.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 35ms (Views: 34.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/l" for 127.0.0.1 at 2011-03-31 17:43:00 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"l"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'l') LIMIT 1[0m
+Completed   in 22ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-31 17:43:00 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.6ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (37.6ms)
+Completed 200 OK in 80ms (Views: 40.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/register" for 127.0.0.1 at 2011-03-31 17:43:09 -0400
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered users/new.html.erb within layouts/application (26.9ms)
+Completed 200 OK in 47ms (Views: 30.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-03-31 17:43:29 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "user"=>{"username"=>"mr", "firstname"=>"mr", "lastname"=>"blah", "email"=>"ha@ha.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"0", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Sign up"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."username" = 'mr') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('ha@ha.com')) LIMIT 1
+  [1m[36mAREL (29.4ms)[0m  [1mINSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('mr', 'mr', 'blah', 'ha@ha.com', 0, '', 'Eastern Time (US & Canada)', '', '', '', '2011-03-31 21:43:29.663845', '2011-03-31 21:43:29.663845', 'password')[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Redirected to http://localhost:3000/users/4
+Redirected to 
+Completed   in 75ms
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/users_controller.rb:61:in `block (2 levels) in create'
+  app/controllers/users_controller.rb:59:in `create'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (35.8ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (39.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-31 17:45:37 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 76ms (Views: 60.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/register" for 127.0.0.1 at 2011-03-31 17:45:48 -0400
+  Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered users/new.html.erb within layouts/application (67.4ms)
+Completed 200 OK in 91ms (Views: 71.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-03-31 17:46:03 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "user"=>{"username"=>"mars", "firstname"=>"mars", "lastname"=>"ipan", "email"=>"mars@ipan.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"0", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Sign up"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'mars') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('mars@ipan.com')) LIMIT 1[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('mars', 'mars', 'ipan', 'mars@ipan.com', 0, '', 'Eastern Time (US & Canada)', '', '', '', '2011-03-31 21:46:03.545480', '2011-03-31 21:46:03.545480', 'kak')
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+Redirected to http://localhost:3000/users/5
+Completed 302 Found in 90ms
+
+
+Started GET "/users/5" for 127.0.0.1 at 2011-03-31 17:46:03 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '5') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1
+Rendered users/show.html.erb within layouts/application (41.5ms)
+Completed 200 OK in 68ms (Views: 44.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-03-31 17:46:06 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 5) LIMIT 1
+Rendered users/index.html.erb within layouts/application (59.0ms)
+Completed 200 OK in 77ms (Views: 62.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/l" for 127.0.0.1 at 2011-03-31 17:47:35 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"l"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'l') LIMIT 1[0m
+Completed   in 32ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-03-31 17:47:35 -0400
+  Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 23ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-31 17:47:35 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (71.6ms)
+Completed 200 OK in 83ms (Views: 75.3ms | ActiveRecord: 1.0ms)
