@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
     if user.nil?
       return nil
     elsif user.password == password
+      return user
     end
   end
   
