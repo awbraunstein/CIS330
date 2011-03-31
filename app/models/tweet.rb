@@ -15,5 +15,5 @@ class Tweet < ActiveRecord::Base
   
   attr_accessible :body
   attr_readonly :user_id
-  validates :body, :length => {:maximum => 140}
+  validates :body, :length => {:maximum => 140, :minimum =>1}
 end

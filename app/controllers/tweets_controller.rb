@@ -25,7 +25,6 @@ class TweetsController < ApplicationController
   # GET /tweets/new.xml
   def new
     @tweet = Tweet.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @tweet }
@@ -41,6 +40,7 @@ class TweetsController < ApplicationController
   # POST /tweets.xml
   def create
     @tweet = Tweet.new(params[:tweet])
+    @tweet.user_id = current_user.id
 
     respond_to do |format|
       if @tweet.save
