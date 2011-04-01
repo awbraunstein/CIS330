@@ -5,7 +5,7 @@ Twitter::Application.routes.draw do
 
   resources :users
 
-  resources :sessions
+  resources :sessions, :only => [:new, :create, :destroy]
   
   match "register" => "users#new"
   match "login" => "sessions#new"
