@@ -1,0 +1,27 @@
+<h1>Listing followsusers</h1>
+
+<table>
+  <tr>
+    <th>Followerid</th>
+    <th>Followingid</th>
+    <th>Approved</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @followsusers.each do |followsuser| %>
+  <tr>
+    <td><%= followsuser.followerid %></td>
+    <td><%= followsuser.followingid %></td>
+    <td><%= followsuser.approved %></td>
+    <td><%= link_to 'Show', followsuser %></td>
+    <td><%= link_to 'Edit', edit_followsuser_path(followsuser) %></td>
+    <td><%= link_to 'Destroy', followsuser, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Followsuser', new_followsuser_path %>
