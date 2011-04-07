@@ -21,13 +21,11 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
   has_many :tweets, :dependent => :destroy
-  has_and_belongs_to_many :following, :class_name => "User",
-  :join_table => "follows_user", :association_foreign_key => "follows_id",
-  :foreign_key => "follower_id"
-  has_and_belongs_to_many :followers, :class_name => "User",
-  :join_table => "follows_user", :association_foreign_key => "follower_id",
-  :foreign_key => "follows_id"
-
+  has_many :followsusers, :foreign_key => "follower_id", :dependent => :destroy
+  has_many :usersfollow, :class_name => "Followsuser",
+           :foreign_key => "following_id", :dependent => :destroy
+  has_many :following, :through => :followsusers, :source => :following
+  has_many :followers, :through => :usersfollow, :source => :follower
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
   attr_accessible :time_zone, :bio, :location, :language, :password, :password_confirmation

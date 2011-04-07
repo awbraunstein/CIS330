@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "followsusers/show.html.erb" do
   before(:each) do
     @followsuser = assign(:followsuser, stub_model(Followsuser,
-      :followerid => 1,
-      :followingid => 1,
+      :follower_id => 1,
+      :following_id => 1,
       :approved => 1
     ))
   end

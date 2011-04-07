@@ -4,13 +4,13 @@ describe "followsusers/index.html.erb" do
   before(:each) do
     assign(:followsusers, [
       stub_model(Followsuser,
-        :followerid => 1,
-        :followingid => 1,
+        :follower_id => 1,
+        :following_id => 1,
         :approved => 1
       ),
       stub_model(Followsuser,
-        :followerid => 1,
-        :followingid => 1,
+        :follower_id => 1,
+        :following_id => 1,
         :approved => 1
       )
     ])

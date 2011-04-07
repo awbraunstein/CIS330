@@ -1,8 +1,8 @@
 class CreateFollowsusers < ActiveRecord::Migration
   def self.up
     create_table :followsusers do |t|
-      t.integer :followerid
-      t.integer :followingid
+      t.integer :follower_id
+      t.integer :following_id
       t.integer :approved
 
       t.timestamps

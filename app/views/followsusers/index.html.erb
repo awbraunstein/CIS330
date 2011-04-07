@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Followerid</th>
-    <th>Followingid</th>
+    <th>Follower</th>
+    <th>Following</th>
     <th>Approved</th>
     <th></th>
     <th></th>
@@ -12,8 +12,8 @@
 
 <% @followsusers.each do |followsuser| %>
   <tr>
-    <td><%= followsuser.followerid %></td>
-    <td><%= followsuser.followingid %></td>
+    <td><%= followsuser.follower_id %></td>
+    <td><%= followsuser.following_id %></td>
     <td><%= followsuser.approved %></td>
     <td><%= link_to 'Show', followsuser %></td>
     <td><%= link_to 'Edit', edit_followsuser_path(followsuser) %></td>
