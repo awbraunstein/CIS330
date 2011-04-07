@@ -10,15 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110407215015) do
+ActiveRecord::Schema.define(:version => 20110407223157) do
 
   create_table "followsusers", :force => true do |t|
     t.integer  "follower_id"
     t.integer  "following_id"
-    t.integer  "approved"
+    t.boolean  "approved"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "followsusers", ["follower_id", "following_id"], :name => "index_followsusers_on_follower_id_and_following_id", :unique => true
+  add_index "followsusers", ["follower_id"], :name => "index_followsusers_on_follower_id"
+  add_index "followsusers", ["following_id"], :name => "index_followsusers_on_following_id"
 
   create_table "messages", :force => true do |t|
     t.string   "subject",    :null => false

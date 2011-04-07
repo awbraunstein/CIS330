@@ -5,7 +5,7 @@ describe "followsusers/edit.html.erb" do
     @followsuser = assign(:followsuser, stub_model(Followsuser,
       :follower_id => 1,
       :following_id => 1,
-      :approved => 1
+      :approved => false
     ))
   end
 

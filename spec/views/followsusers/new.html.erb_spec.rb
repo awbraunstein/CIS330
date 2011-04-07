@@ -5,7 +5,7 @@ describe "followsusers/new.html.erb" do
     assign(:followsuser, stub_model(Followsuser,
       :follower_id => 1,
       :following_id => 1,
-      :approved => 1
+      :approved => false
     ).as_new_record)
   end
 

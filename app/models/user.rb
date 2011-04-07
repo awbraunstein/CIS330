@@ -21,11 +21,19 @@ require 'digest/sha1'
 
 class User < ActiveRecord::Base
   has_many :tweets, :dependent => :destroy
+
   has_many :followsusers, :foreign_key => "follower_id", :dependent => :destroy
+  has_many :following, :through => :followsusers, :source => :following
+
   has_many :usersfollow, :class_name => "Followsuser",
            :foreign_key => "following_id", :dependent => :destroy
-  has_many :following, :through => :followsusers, :source => :following
   has_many :followers, :through => :usersfollow, :source => :follower
+  
+  has_many :followerrequests, :through => :usersfollow, :source => :follower,
+           :conditions => ["approved = ?", false]
+
+  has_many :followrequests, :through => :followsusers, :source => :following,
+           :conditions => ["approved = ?", false]
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
   attr_accessible :time_zone, :bio, :location, :language, :password, :password_confirmation
@@ -39,7 +47,48 @@ class User < ActiveRecord::Base
   #  attr_accessor :password, :password_confirmation
   #  before_save Digest::SHA1.hexdigest(password)
 
-  
+  def follows?(user)
+    if user.nil?
+      return false
+    end
+    rel = followsusers.find_by_following_id(user.id)
+    if rel.nil?
+      return false
+    elsif !rel.approved
+      return false
+    end
+      return true
+  end
+
+  def requested?(user)
+    if user.nil?
+      return false
+    end
+    rel = followsusers.find_by_following_id(user.id)
+    if rel.nil?
+      return false
+    elsif !rel.approved
+      return true
+    end
+    return false
+  end
+
+  def follow!(user)
+    if follows?(user) || requested?(user)
+      return
+    end
+    if user.privacy == 0
+      followsusers.create!(:following_id => user.id, :approved => true)
+    else
+      followsusers.create!(:following_id => user.id, :approved => false)
+    end
+  end
+
+  def unfollow!(user)
+    followsusers.find_by_following_id(user.id).destroy
+  end
+
+   
   def self.encrypt_password
     print password
     self.password = encrypt(password)

@@ -4568,3 +4568,1786 @@ Completed 200 OK in 97ms (Views: 89.7ms | ActiveRecord: 1.0ms)
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 1))[0m
   [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
   [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1))[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (37.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (3.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateUsers (20110307215224)
+  [1m[36mSQL (0.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "firstname" varchar(255), "lastname" varchar(255), "email" varchar(255), "privacy" integer, "webpage" varchar(255), "time_zone" varchar(255), "bio" text, "location" varchar(255), "language" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110307215224')
+Migrating to CreateTweets (20110307224716)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "body" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110307224716')
+Migrating to CreateMessages (20110318001222)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "subject" varchar(255) NOT NULL, "body" text NOT NULL, "from_id" integer NOT NULL, "to_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110318001222')
+Migrating to AddPasswordToUsers (20110318035821)
+  [1m[36mSQL (0.5ms)[0m  [1mALTER TABLE "users" ADD "password" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110318035821')
+Migrating to CreateFollowsusers (20110407223157)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "followsusers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "follower_id" integer, "following_id" integer, "approved" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110407223157')
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("followsusers")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("messages")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tweets")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 18:32:27 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (55.6ms)
+Completed 200 OK in 79ms (Views: 58.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-04-07 18:32:29 -0400
+  Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered users/new.html.erb within layouts/application (73.0ms)
+Completed 200 OK in 112ms (Views: 79.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-04-07 18:32:39 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "user"=>{"username"=>"blah", "firstname"=>"blah", "lastname"=>"bla", "email"=>"adf@d.ad", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"0", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Sign up"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'blah') LIMIT 1
+  [1m[36mUser Load (1.4ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('adf@d.ad')) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('blah', 'blah', 'bla', 'adf@d.ad', 0, '', 'Eastern Time (US & Canada)', '', '', '', '2011-04-07 22:32:40.075265', '2011-04-07 22:32:40.075265', 'pass')
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 86ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-04-07 18:32:40 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '1') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered users/show.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 81ms (Views: 15.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 18:32:41 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered users/index.html.erb within layouts/application (58.7ms)
+Completed 200 OK in 81ms (Views: 61.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-04-07 18:32:42 -0400
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered users/new.html.erb within layouts/application (27.5ms)
+Completed 200 OK in 90ms (Views: 30.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-04-07 18:32:54 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "user"=>{"username"=>"fads", "firstname"=>"afd", "lastname"=>"dasf", "email"=>"dasf@da.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"0", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Sign up"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'fads') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('dasf@da.com')) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('fads', 'afd', 'dasf', 'dasf@da.com', 0, '', 'Eastern Time (US & Canada)', '', '', '', '2011-04-07 22:32:54.139783', '2011-04-07 22:32:54.139783', 'pass')
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 87ms
+
+
+Started GET "/users/2" for 127.0.0.1 at 2011-04-07 18:32:54 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '2') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/show.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 81ms (Views: 16.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 18:32:56 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/index.html.erb within layouts/application (26.4ms)
+Completed 200 OK in 84ms (Views: 29.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-04-07 18:33:00 -0400
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered users/new.html.erb within layouts/application (26.1ms)
+Completed 200 OK in 90ms (Views: 31.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-04-07 18:33:17 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "user"=>{"username"=>"turdsandwich", "firstname"=>"Andrew", "lastname"=>"Braunstein", "email"=>"ka@ka.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"0", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"United States", "language"=>""}, "commit"=>"Sign up"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'turdsandwich') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('ka@ka.com')) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('turdsandwich', 'Andrew', 'Braunstein', 'ka@ka.com', 0, '', 'Eastern Time (US & Canada)', '', 'United States', '', '2011-04-07 22:33:17.897077', '2011-04-07 22:33:17.897077', 'pass')
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 51ms
+
+
+Started GET "/users/3" for 127.0.0.1 at 2011-04-07 18:33:17 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '3') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered users/show.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 46ms (Views: 16.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 18:33:19 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered users/index.html.erb within layouts/application (62.8ms)
+Completed 200 OK in 88ms (Views: 65.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/userf" for 127.0.0.1 at 2011-04-07 18:33:21 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"userf"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'userf') LIMIT 1[0m
+Completed   in 38ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.6ms)
+
+
+Started GET "/userfollows" for 127.0.0.1 at 2011-04-07 18:33:22 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"userfollows"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'userfollows') LIMIT 1
+Completed   in 28ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.9ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.4ms)
+
+
+Started GET "/usersfollow" for 127.0.0.1 at 2011-04-07 18:33:28 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"usersfollow"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'usersfollow') LIMIT 1[0m
+Completed   in 65ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started GET "/userf" for 127.0.0.1 at 2011-04-07 18:33:36 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"userf"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'userf') LIMIT 1
+Completed   in 68ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.3ms)
+
+
+Started GET "/userfollows" for 127.0.0.1 at 2011-04-07 18:33:37 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"userfollows"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'userfollows') LIMIT 1[0m
+Completed   in 61ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:33:46 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.6ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (75.8ms)
+Completed 200 OK in 88ms (Views: 79.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:33:49 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (50.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (96.5ms)
+Completed 200 OK in 111ms (Views: 100.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:34:19 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"2", "approved"=>"1"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.3ms)[0m  INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 2, 't', '2011-04-07 22:34:19.271155', '2011-04-07 22:34:19.271155')
+Redirected to http://localhost:3000/followsusers/1
+Completed 302 Found in 25ms
+
+
+Started GET "/followsusers/1" for 127.0.0.1 at 2011-04-07 18:34:19 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/show.html.erb within layouts/application (86.7ms)
+Completed 200 OK in 101ms (Views: 91.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:34:20 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.4ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (90.9ms)
+Completed 200 OK in 102ms (Views: 94.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:34:22 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (6.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (86.2ms)
+Completed 200 OK in 100ms (Views: 90.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:34:25 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"2", "following_id"=>"1", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (2, 1, 'f', '2011-04-07 22:34:25.196889', '2011-04-07 22:34:25.196889')
+Redirected to http://localhost:3000/followsusers/2
+Completed 302 Found in 64ms
+
+
+Started GET "/followsusers/2" for 127.0.0.1 at 2011-04-07 18:34:25 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/show.html.erb within layouts/application (87.8ms)
+Completed 200 OK in 103ms (Views: 92.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:34:26 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (3.4ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (85.7ms)
+Completed 200 OK in 100ms (Views: 89.1ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:34:27 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (7.4ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (86.8ms)
+Completed 200 OK in 101ms (Views: 90.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:34:30 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"3", "following_id"=>"1", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (3, 1, 'f', '2011-04-07 22:34:30.659354', '2011-04-07 22:34:30.659354')
+Redirected to http://localhost:3000/followsusers/3
+Completed 302 Found in 27ms
+
+
+Started GET "/followsusers/3" for 127.0.0.1 at 2011-04-07 18:34:30 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/show.html.erb within layouts/application (85.4ms)
+Completed 200 OK in 136ms (Views: 88.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:34:32 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.5ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (91.4ms)
+Completed 200 OK in 104ms (Views: 96.1ms | ActiveRecord: 0.7ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 1))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 1))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1))
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 'f')))[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 1) AND ((approved = 'f')))[0m
+
+
+Started GET "/followsusers/2/edit" for 127.0.0.1 at 2011-04-07 18:42:43 -0400
+  Processing by FollowsusersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.4ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 2) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (8.6ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/edit.html.erb within layouts/application (90.8ms)
+Completed 200 OK in 141ms (Views: 94.3ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/followsusers/2" for 127.0.0.1 at 2011-04-07 18:42:46 -0400
+  Processing by FollowsusersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"2", "following_id"=>"1", "approved"=>"1"}, "commit"=>"Update Followsuser", "id"=>"2"}
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 2) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mUPDATE "followsusers" SET "approved" = 't', "updated_at" = '2011-04-07 22:42:46.317925' WHERE ("followsusers"."id" = 2)[0m
+Redirected to http://localhost:3000/followsusers/2
+Completed 302 Found in 25ms
+
+
+Started GET "/followsusers/2" for 127.0.0.1 at 2011-04-07 18:42:46 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/show.html.erb within layouts/application (129.5ms)
+Completed 200 OK in 144ms (Views: 133.0ms | ActiveRecord: 1.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 1) AND ((approved = 'f')))[0m
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:42:52 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (90.3ms)
+Completed 200 OK in 103ms (Views: 94.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:42:56 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (43.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (127.2ms)
+Completed 200 OK in 141ms (Views: 130.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:43:00 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"3", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 3, 'f', '2011-04-07 22:43:00.614369', '2011-04-07 22:43:00.614369')[0m
+Redirected to http://localhost:3000/followsusers/4
+Completed 302 Found in 29ms
+
+
+Started GET "/followsusers/4" for 127.0.0.1 at 2011-04-07 18:43:00 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/show.html.erb within layouts/application (128.6ms)
+Completed 200 OK in 142ms (Views: 132.5ms | ActiveRecord: 1.6ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 'f')))[0m
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:43:07 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (98.7ms)
+Completed 200 OK in 114ms (Views: 103.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:43:07 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (131.6ms)
+Completed 200 OK in 144ms (Views: 135.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:43:09 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (6.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (91.7ms)
+Completed 200 OK in 108ms (Views: 95.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:43:12 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"2", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 2, 'f', '2011-04-07 22:43:12.779765', '2011-04-07 22:43:12.779765')[0m
+Redirected to http://localhost:3000/followsusers/5
+Completed 302 Found in 25ms
+
+
+Started GET "/followsusers/5" for 127.0.0.1 at 2011-04-07 18:43:12 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 5) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/show.html.erb within layouts/application (93.3ms)
+Completed 200 OK in 108ms (Views: 96.9ms | ActiveRecord: 1.4ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 'f')))[0m
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (3.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("schema_migrations")
+  [1m[36mSQL (3.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+Migrating to CreateUsers (20110307215224)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar(255), "firstname" varchar(255), "lastname" varchar(255), "email" varchar(255), "privacy" integer, "webpage" varchar(255), "time_zone" varchar(255), "bio" text, "location" varchar(255), "language" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110307215224')
+Migrating to CreateTweets (20110307224716)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "tweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "body" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110307224716')
+Migrating to CreateMessages (20110318001222)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "messages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "subject" varchar(255) NOT NULL, "body" text NOT NULL, "from_id" integer NOT NULL, "to_id" integer NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110318001222')
+Migrating to AddPasswordToUsers (20110318035821)
+  [1m[36mSQL (0.4ms)[0m  [1mALTER TABLE "users" ADD "password" varchar(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110318035821')
+Migrating to CreateFollowsusers (20110407223157)
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE TABLE "followsusers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "follower_id" integer, "following_id" integer, "approved" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("followsusers")
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE INDEX "index_followsusers_on_follower_id" ON "followsusers" ("follower_id")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("followsusers")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_followsusers_on_follower_id')[0m
+  [1m[35mSQL (0.1ms)[0m  CREATE INDEX "index_followsusers_on_following_id" ON "followsusers" ("following_id")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("followsusers")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_followsusers_on_following_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_followsusers_on_follower_id')[0m
+  [1m[35mSQL (0.4ms)[0m  CREATE UNIQUE INDEX "index_followsusers_on_follower_id_and_following_id" ON "followsusers" ("follower_id", "following_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20110407223157')[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("followsusers")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_followsusers_on_follower_id_and_following_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_followsusers_on_following_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_followsusers_on_follower_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("messages")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tweets")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+
+
+Started GET "/i" for 127.0.0.1 at 2011-04-07 18:46:23 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"i"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'i') LIMIT 1[0m
+Completed   in 69ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.3ms)
+
+
+Started GET "/isers" for 127.0.0.1 at 2011-04-07 18:46:23 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"isers"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'isers') LIMIT 1
+Completed   in 71ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 18:46:24 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 78ms (Views: 54.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-04-07 18:46:26 -0400
+  Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered users/new.html.erb within layouts/application (28.2ms)
+Completed 200 OK in 96ms (Views: 31.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-04-07 18:46:43 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "user"=>{"username"=>"themoderata", "firstname"=>"afd", "lastname"=>"dfaasd", "email"=>"fdafasd@daf.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"0", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Sign up"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'themoderata') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('fdafasd@daf.com')) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('themoderata', 'afd', 'dfaasd', 'fdafasd@daf.com', 0, '', 'Eastern Time (US & Canada)', '', '', '', '2011-04-07 22:46:43.824247', '2011-04-07 22:46:43.824247', 'pass')
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 90ms
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-04-07 18:46:43 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '1') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered users/show.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 84ms (Views: 16.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 18:46:45 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+Rendered users/index.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 53ms (Views: 27.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-04-07 18:46:46 -0400
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+Rendered users/new.html.erb within layouts/application (63.7ms)
+Completed 200 OK in 95ms (Views: 66.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-04-07 18:46:54 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "user"=>{"username"=>"tart", "firstname"=>"ha", "lastname"=>"ha", "email"=>"ha@ha.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"0", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Sign up"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'tart') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('ha@ha.com')) LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('tart', 'ha', 'ha', 'ha@ha.com', 0, '', 'Eastern Time (US & Canada)', '', '', '', '2011-04-07 22:46:54.743303', '2011-04-07 22:46:54.743303', 'pass')
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 95ms
+
+
+Started GET "/users/2" for 127.0.0.1 at 2011-04-07 18:46:54 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '2') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/show.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 86ms (Views: 16.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 18:46:56 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/index.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 91ms (Views: 65.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-04-07 18:46:57 -0400
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered users/new.html.erb within layouts/application (27.5ms)
+Completed 200 OK in 94ms (Views: 30.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-04-07 18:47:06 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "user"=>{"username"=>"tweet", "firstname"=>"ta", "lastname"=>"ta", "email"=>"ta@ta.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"0", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Sign up"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'tweet') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('ta@ta.com')) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('tweet', 'ta', 'ta', 'ta@ta.com', 0, '', 'Eastern Time (US & Canada)', '', '', '', '2011-04-07 22:47:06.982447', '2011-04-07 22:47:06.982447', 'pass')
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 91ms
+
+
+Started GET "/users/3" for 127.0.0.1 at 2011-04-07 18:47:07 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '3') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered users/show.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 86ms (Views: 16.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/f" for 127.0.0.1 at 2011-04-07 18:47:10 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"f"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'f') LIMIT 1[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 0) LIMIT 1
+Completed   in 33ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with ID=f):
+  app/controllers/users_controller.rb:18:in `show'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.7ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.7ms)
+
+
+Started GET "/users/follo" for 127.0.0.1 at 2011-04-07 18:47:11 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"follo"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'follo') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 0) LIMIT 1
+Completed   in 78ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with ID=follo):
+  app/controllers/users_controller.rb:18:in `show'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.9ms)
+
+
+Started GET "/users/foll" for 127.0.0.1 at 2011-04-07 18:47:11 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"foll"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'foll') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 0) LIMIT 1
+Completed   in 66ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with ID=foll):
+  app/controllers/users_controller.rb:18:in `show'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 18:47:12 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (81.4ms)
+Completed 200 OK in 93ms (Views: 84.7ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:47:13 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.4ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (80.8ms)
+Completed 200 OK in 93ms (Views: 83.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:47:13 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.4ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (81.3ms)
+Completed 200 OK in 95ms (Views: 84.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:47:15 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (9.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (103.3ms)
+Completed 200 OK in 119ms (Views: 106.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:47:17 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"1", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 1, 'f', '2011-04-07 22:47:17.969526', '2011-04-07 22:47:17.969526')[0m
+Redirected to http://localhost:3000/followsusers/1
+Completed 302 Found in 27ms
+
+
+Started GET "/followsusers/1" for 127.0.0.1 at 2011-04-07 18:47:17 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/show.html.erb within layouts/application (94.4ms)
+Completed 200 OK in 109ms (Views: 97.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:47:19 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.6ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (93.7ms)
+Completed 200 OK in 107ms (Views: 97.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:47:20 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (6.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (91.7ms)
+Completed 200 OK in 106ms (Views: 95.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:47:23 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"1", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 1, 'f', '2011-04-07 22:47:23.810174', '2011-04-07 22:47:23.810174')[0m
+SQLite3::ConstraintException: columns follower_id, following_id are not unique: INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 1, 'f', '2011-04-07 22:47:23.810174', '2011-04-07 22:47:23.810174')
+Completed   in 21ms
+
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: columns follower_id, following_id are not unique: INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 1, 'f', '2011-04-07 22:47:23.810174', '2011-04-07 22:47:23.810174')):
+  app/controllers/followsusers_controller.rb:46:in `block in create'
+  app/controllers/followsusers_controller.rb:45:in `create'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.5ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (8.8ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:50:17 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"10", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."username" = 'themoderata') AND ("users".id <> 1) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('fdafasd@daf.com')) AND ("users".id <> 1) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 10) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (3.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (46.0ms)
+Completed 200 OK in 202ms (Views: 49.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:50:22 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (8.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (94.2ms)
+Completed 200 OK in 109ms (Views: 97.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:50:25 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"134", "following_id"=>"342", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 134) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 342) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (134, 342, 'f', '2011-04-07 22:50:25.872925', '2011-04-07 22:50:25.872925')[0m
+Redirected to http://localhost:3000/followsusers/2
+Completed 302 Found in 97ms
+
+
+Started GET "/followsusers/2" for 127.0.0.1 at 2011-04-07 18:50:25 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/show.html.erb within layouts/application (131.2ms)
+Completed 200 OK in 146ms (Views: 136.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:50:29 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (1.0ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (91.2ms)
+Completed 200 OK in 104ms (Views: 95.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:50:30 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (45.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (93.1ms)
+Completed 200 OK in 106ms (Views: 96.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:50:34 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"10", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."username" = 'themoderata') AND ("users".id <> 1) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('fdafasd@daf.com')) AND ("users".id <> 1) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 10) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (3.6ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 113ms (Views: 11.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:50:40 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"2", "following_id"=>"10", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'tart') AND ("users".id <> 2) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('ha@ha.com')) AND ("users".id <> 2) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 10) LIMIT 1
+Rendered followsusers/_form.html.erb (3.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 125ms (Views: 12.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:50:43 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"2323", "following_id"=>"10", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2323) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 10) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (2323, 10, 'f', '2011-04-07 22:50:43.916781', '2011-04-07 22:50:43.916781')[0m
+Redirected to http://localhost:3000/followsusers/3
+Completed 302 Found in 95ms
+
+
+Started GET "/followsusers/3" for 127.0.0.1 at 2011-04-07 18:50:43 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/show.html.erb within layouts/application (92.0ms)
+Completed 200 OK in 106ms (Views: 95.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:50:48 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (94.3ms)
+Completed 200 OK in 144ms (Views: 133.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:50:49 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (6.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (94.1ms)
+Completed 200 OK in 110ms (Views: 97.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:50:56 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"34", "following_id"=>"2234", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 34) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2234) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (34, 2234, 'f', '2011-04-07 22:50:56.836775', '2011-04-07 22:50:56.836775')[0m
+Redirected to http://localhost:3000/followsusers/4
+Completed 302 Found in 100ms
+
+
+Started GET "/followsusers/4" for 127.0.0.1 at 2011-04-07 18:50:56 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.3ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/show.html.erb within layouts/application (90.4ms)
+Completed 200 OK in 140ms (Views: 93.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:50:58 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.6ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (96.0ms)
+Completed 200 OK in 109ms (Views: 99.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:50:59 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (7.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (93.1ms)
+Completed 200 OK in 144ms (Views: 96.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:02 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"2", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."username" = 'themoderata') AND ("users".id <> 1) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('fdafasd@daf.com')) AND ("users".id <> 1) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'tart') AND ("users".id <> 2) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('ha@ha.com')) AND ("users".id <> 2) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (4.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 122ms (Views: 14.1ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:11 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"2", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE ("users"."username" = 'themoderata') AND ("users".id <> 1) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('fdafasd@daf.com')) AND ("users".id <> 1) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."username" = 'tart') AND ("users".id <> 2) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('ha@ha.com')) AND ("users".id <> 2) LIMIT 1
+Rendered followsusers/_form.html.erb (6.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 154ms (Views: 13.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:13 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.5ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (97.9ms)
+Completed 200 OK in 111ms (Views: 101.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/followsusers/2" for 127.0.0.1 at 2011-04-07 18:51:17 -0400
+  Processing by FollowsusersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "id"=>"2"}
+  [1m[35mSQL (1.8ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 2) LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  DELETE FROM "followsusers" WHERE ("followsusers"."id" = 2)
+Redirected to http://localhost:3000/followsusers
+Completed 302 Found in 97ms
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:17 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.6ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (100.1ms)
+Completed 200 OK in 113ms (Views: 103.4ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/followsusers/3" for 127.0.0.1 at 2011-04-07 18:51:19 -0400
+  Processing by FollowsusersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "id"=>"3"}
+  [1m[36mSQL (1.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 3) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM "followsusers" WHERE ("followsusers"."id" = 3)[0m
+Redirected to http://localhost:3000/followsusers
+Completed 302 Found in 60ms
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:19 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.8ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (103.3ms)
+Completed 200 OK in 119ms (Views: 109.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/followsusers/4" for 127.0.0.1 at 2011-04-07 18:51:20 -0400
+  Processing by FollowsusersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "id"=>"4"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 4) LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  DELETE FROM "followsusers" WHERE ("followsusers"."id" = 4)
+Redirected to http://localhost:3000/followsusers
+Completed 302 Found in 101ms
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:20 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (97.8ms)
+Completed 200 OK in 111ms (Views: 101.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:51:22 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (7.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/new.html.erb within layouts/application (91.7ms)
+Completed 200 OK in 143ms (Views: 95.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:26 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"134", "following_id"=>"234", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 134) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 234) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (134, 234, 'f', '2011-04-07 22:51:26.838131', '2011-04-07 22:51:26.838131')[0m
+Redirected to http://localhost:3000/followsusers/5
+Completed 302 Found in 100ms
+
+
+Started GET "/followsusers/5" for 127.0.0.1 at 2011-04-07 18:51:26 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 5) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/show.html.erb within layouts/application (91.8ms)
+Completed 200 OK in 106ms (Views: 96.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:28 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.6ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (96.1ms)
+Completed 200 OK in 109ms (Views: 99.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/followsusers/5" for 127.0.0.1 at 2011-04-07 18:51:31 -0400
+  Processing by FollowsusersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "id"=>"5"}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 5) LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mDELETE FROM "followsusers" WHERE ("followsusers"."id" = 5)[0m
+Redirected to http://localhost:3000/followsusers
+Completed 302 Found in 22ms
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:31 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.5ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (93.6ms)
+Completed 200 OK in 142ms (Views: 96.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 18:51:51 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (6.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (90.7ms)
+Completed 200 OK in 105ms (Views: 94.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:55 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"1", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.4ms)[0m  SELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."follower_id" = 1) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."following_id" = 1) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (4.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (91.5ms)
+Completed 200 OK in 153ms (Views: 95.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:51:59 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"2", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."follower_id" = 1) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."following_id" = 2) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (3.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (86.9ms)
+Completed 200 OK in 113ms (Views: 90.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:52:27 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"2", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."follower_id" = 1) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."following_id" = 2) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (3.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (87.7ms)
+Completed 200 OK in 150ms (Views: 91.9ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:52:29 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"2", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."follower_id" = 1) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."following_id" = 2) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (3.6ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (88.8ms)
+Completed 200 OK in 112ms (Views: 92.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:52:29 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"2", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."follower_id" = 1) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."following_id" = 2) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (3.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (88.3ms)
+Completed 200 OK in 148ms (Views: 91.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 18:52:33 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"2", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 2, 'f', '2011-04-07 22:52:34.030312', '2011-04-07 22:52:34.030312')
+Redirected to http://localhost:3000/followsusers/6
+Completed 302 Found in 30ms
+
+
+Started GET "/followsusers/6" for 127.0.0.1 at 2011-04-07 18:52:34 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 6) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/show.html.erb within layouts/application (91.3ms)
+Completed 200 OK in 107ms (Views: 94.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 18:52:35 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.6ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (94.7ms)
+Completed 200 OK in 108ms (Views: 98.1ms | ActiveRecord: 0.8ms)
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1)) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.7ms)[0m  SELECT "followsusers".* FROM "followsusers" LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."following_id" = 1) LIMIT 1
+  [1m[36mFollowsuser Load (0.3ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."follower_id" = 1) LIMIT 1[0m
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 19:00:27 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (7.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (94.7ms)
+Completed 200 OK in 109ms (Views: 98.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 19:00:30 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"3", "approved"=>"0"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (1.9ms)[0m  INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 3, 'f', '2011-04-07 23:00:30.734022', '2011-04-07 23:00:30.734022')
+Redirected to http://localhost:3000/followsusers/7
+Completed 302 Found in 28ms
+
+
+Started GET "/followsusers/7" for 127.0.0.1 at 2011-04-07 19:00:30 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 7) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/show.html.erb within layouts/application (92.3ms)
+Completed 200 OK in 145ms (Views: 96.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:00:32 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.5ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (95.4ms)
+Completed 200 OK in 108ms (Views: 98.6ms | ActiveRecord: 0.7ms)
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."follower_id" = 1) LIMIT 1
+  [1m[36mFollowsuser Load (0.3ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."follower_id" = 1) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."following_id" = 1) LIMIT 1
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."following_id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1)) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 1) LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1)) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 1) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 1) LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 3) AND ("followsusers"."following_id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 3) AND ("followsusers"."following_id" = 2) LIMIT 1
+
+
+Started GET "/followsusers/new" for 127.0.0.1 at 2011-04-07 19:04:27 -0400
+  Processing by FollowsusersController#new as HTML
+Rendered followsusers/_form.html.erb (6.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/new.html.erb within layouts/application (94.0ms)
+Completed 200 OK in 108ms (Views: 97.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/followsusers" for 127.0.0.1 at 2011-04-07 19:04:31 -0400
+  Processing by FollowsusersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"3", "following_id"=>"2", "approved"=>"1"}, "commit"=>"Create Followsuser"}
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (3, 2, 't', '2011-04-07 23:04:31.916436', '2011-04-07 23:04:31.916436')
+Redirected to http://localhost:3000/followsusers/8
+Completed 302 Found in 25ms
+
+
+Started GET "/followsusers/8" for 127.0.0.1 at 2011-04-07 19:04:31 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mSQL (0.7ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 8) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/show.html.erb within layouts/application (97.2ms)
+Completed 200 OK in 151ms (Views: 100.5ms | ActiveRecord: 1.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 3) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:07:48 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.5ms)[0m  SELECT "followsusers".* FROM "followsusers"
+Rendered followsusers/index.html.erb within layouts/application (20.0ms)
+Completed   in 33ms
+
+ActionView::Template::Error (/Users/zach/Documents/Class/cis330/project/app/models/user.rb:72: syntax error, unexpected keyword_def, expecting ')'
+  def encrypt(string)
+     ^
+/Users/zach/Documents/Class/cis330/project/app/models/user.rb:85: syntax error, unexpected $end, expecting keyword_end):
+    7:   <%= csrf_meta_tag %>
+    8: </head>
+    9: <body>
+    10: <% if !current_user.nil? %>
+    11: <div id="logged_in_user">
+    12: Logged in as
+    13: <%= current_user.username %>
+  app/helpers/sessions_helper.rb:22:in `current_user'
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb__2694666576791708063_2159310660_3293564979910580212'
+  app/controllers/followsusers_controller.rb:7:in `index'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (40.1ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.9ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (49.1ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:08:03 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+Rendered followsusers/index.html.erb within layouts/application (19.7ms)
+Completed   in 34ms
+
+ActionView::Template::Error (/Users/zach/Documents/Class/cis330/project/app/models/user.rb:86: syntax error, unexpected $end, expecting keyword_end):
+    7:   <%= csrf_meta_tag %>
+    8: </head>
+    9: <body>
+    10: <% if !current_user.nil? %>
+    11: <div id="logged_in_user">
+    12: Logged in as
+    13: <%= current_user.username %>
+  app/helpers/sessions_helper.rb:22:in `current_user'
+  app/views/layouts/application.html.erb:10:in `_app_views_layouts_application_html_erb__2694666576791708063_2173827920_3293564979910580212'
+  app/controllers/followsusers_controller.rb:7:in `index'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.3ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (8.6ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:08:18 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.6ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (91.3ms)
+Completed 200 OK in 138ms (Views: 94.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/followsusers/7/edit" for 127.0.0.1 at 2011-04-07 19:08:25 -0400
+  Processing by FollowsusersController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 7) LIMIT 1[0m
+Rendered followsusers/_form.html.erb (9.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/edit.html.erb within layouts/application (96.5ms)
+Completed 200 OK in 112ms (Views: 100.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/followsusers/7" for 127.0.0.1 at 2011-04-07 19:08:27 -0400
+  Processing by FollowsusersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "followsuser"=>{"follower_id"=>"1", "following_id"=>"3", "approved"=>"1"}, "commit"=>"Update Followsuser", "id"=>"7"}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 7) LIMIT 1
+  [1m[36mAREL (32.3ms)[0m  [1mUPDATE "followsusers" SET "approved" = 't', "updated_at" = '2011-04-07 23:08:27.455461' WHERE ("followsusers"."id" = 7)[0m
+Redirected to http://localhost:3000/followsusers/7
+Completed 302 Found in 94ms
+
+
+Started GET "/followsusers/7" for 127.0.0.1 at 2011-04-07 19:08:27 -0400
+  Processing by FollowsusersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 7) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/show.html.erb within layouts/application (99.8ms)
+Completed 200 OK in 117ms (Views: 103.2ms | ActiveRecord: 33.8ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:08:29 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (95.5ms)
+Completed 200 OK in 109ms (Views: 98.7ms | ActiveRecord: 0.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 3) AND ("followsusers"."following_id" = 2) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."following_id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."following_id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 1) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 10) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 3) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 1) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 3) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 3) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 1) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (2, 1, NULL, '2011-04-07 23:18:12.632461', '2011-04-07 23:18:12.632461')[0m
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:18:18 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.7ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (98.6ms)
+Completed 200 OK in 110ms (Views: 101.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:19:02 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.6ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (98.0ms)
+Completed 200 OK in 111ms (Views: 102.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:19:09 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.7ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (97.2ms)
+Completed 200 OK in 113ms (Views: 100.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 19:19:12 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered users/index.html.erb within layouts/application (65.3ms)
+Completed 200 OK in 113ms (Views: 87.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-04-07 19:19:15 -0400
+  Processing by UsersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered users/new.html.erb within layouts/application (65.8ms)
+Completed 200 OK in 99ms (Views: 69.0ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/followsusers/9" for 127.0.0.1 at 2011-04-07 19:20:32 -0400
+  Processing by FollowsusersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "id"=>"9"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 9) LIMIT 1[0m
+  [1m[35mAREL (47.8ms)[0m  DELETE FROM "followsusers" WHERE ("followsusers"."id" = 9)
+Redirected to http://localhost:3000/followsusers
+Completed 302 Found in 73ms
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:20:32 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (140.0ms)
+Completed 200 OK in 151ms (Views: 143.3ms | ActiveRecord: 49.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (2, 1, NULL, '2011-04-07 23:20:36.797439', '2011-04-07 23:20:36.797439')
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:20:40 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.7ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (96.1ms)
+Completed 200 OK in 110ms (Views: 101.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/followsusers/10" for 127.0.0.1 at 2011-04-07 19:20:47 -0400
+  Processing by FollowsusersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "id"=>"10"}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 10) LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mDELETE FROM "followsusers" WHERE ("followsusers"."id" = 10)[0m
+Redirected to http://localhost:3000/followsusers
+Completed 302 Found in 61ms
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:20:47 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.7ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (102.6ms)
+Completed 200 OK in 116ms (Views: 106.1ms | ActiveRecord: 2.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (2, 1, 't', '2011-04-07 23:21:00.105706', '2011-04-07 23:21:00.105706')[0m
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:21:06 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.6ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (101.1ms)
+Completed 200 OK in 115ms (Views: 107.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2011-04-07 19:21:17 -0400
+  Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+Rendered users/new.html.erb within layouts/application (27.7ms)
+Completed 200 OK in 94ms (Views: 31.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2011-04-07 19:21:32 -0400
+  Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "user"=>{"username"=>"private", "firstname"=>"privacy", "lastname"=>"mcprivate", "email"=>"private@parts.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "privacy"=>"1", "webpage"=>"", "time_zone"=>"Eastern Time (US & Canada)", "bio"=>"", "location"=>"", "language"=>""}, "commit"=>"Sign up"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" WHERE ("users"."username" = 'private') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users"."id" FROM "users" WHERE (LOWER("users"."email") = LOWER('private@parts.com')) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "users" ("username", "firstname", "lastname", "email", "privacy", "webpage", "time_zone", "bio", "location", "language", "created_at", "updated_at", "password") VALUES ('private', 'privacy', 'mcprivate', 'private@parts.com', 1, '', 'Eastern Time (US & Canada)', '', '', '', '2011-04-07 23:21:32.118490', '2011-04-07 23:21:32.118490', 'pass')[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 97ms
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-04-07 19:21:32 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = '4') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 94ms (Views: 20.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 19:21:34 -0400
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (1.6ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered users/index.html.erb within layouts/application (26.3ms)
+Completed 200 OK in 55ms (Views: 29.7ms | ActiveRecord: 1.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (2, 4, 'f', '2011-04-07 23:21:43.533648', '2011-04-07 23:21:43.533648')
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-04-07 19:22:22 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '4') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/show.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 75ms (Views: 22.1ms | ActiveRecord: 0.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (2, 4, 'f', '2011-04-07 23:23:15.525001', '2011-04-07 23:23:15.525001')[0m
+SQLite3::ConstraintException: columns follower_id, following_id are not unique: INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (2, 4, 'f', '2011-04-07 23:23:15.525001', '2011-04-07 23:23:15.525001')
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 4) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 4) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM "followsusers" WHERE ("followsusers"."id" = 12)[0m
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:24:23 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (98.0ms)
+Completed 200 OK in 111ms (Views: 101.3ms | ActiveRecord: 0.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 4) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 4) LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (2, 4, 'f', '2011-04-07 23:24:31.240093', '2011-04-07 23:24:31.240093')
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:24:33 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.6ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (97.3ms)
+Completed 200 OK in 109ms (Views: 100.6ms | ActiveRecord: 0.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mFollowsuser Load (0.2ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 2) AND ("followsusers"."following_id" = 4) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM "followsusers" WHERE ("followsusers"."id" = 13)
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 19:24:42 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (99.1ms)
+Completed 200 OK in 113ms (Views: 104.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 19:26:04 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (50.5ms)
+Completed 200 OK in 98ms (Views: 53.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 19:26:34 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (82.8ms)
+Completed 200 OK in 94ms (Views: 85.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/private" for 127.0.0.1 at 2011-04-07 19:26:36 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"private"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'private') LIMIT 1[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 4)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered users/user_page.html.erb within layouts/application (49.3ms)
+Completed 200 OK in 199ms (Views: 76.8ms | ActiveRecord: 0.8ms)
