@@ -7480,3 +7480,95 @@ Completed 200 OK in 151ms (Views: 102.5ms | ActiveRecord: 1.8ms)
   [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
   [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 'f')))[0m
+  [1m[36mSQL (1.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20110307215224)
+Migrating to CreateTweets (20110307224716)
+Migrating to CreateMessages (20110318001222)
+Migrating to AddPasswordToUsers (20110318035821)
+Migrating to CreateFollowsusers (20110407223157)
+Migrating to CreateMentions (20110408014416)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "mentions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "tweet_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110408014416')
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("followsusers")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_followsusers_on_follower_id_and_following_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_followsusers_on_following_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_followsusers_on_follower_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("mentions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("messages")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tweets")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT "tweets".* FROM "tweets" INNER JOIN "mentions" ON "tweets".id = "mentions".tweet_id WHERE (("mentions".user_id = 1))
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets" LIMIT 1[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" LIMIT 1
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" LIMIT 1[0m
+  [1m[35mTweet Load (0.4ms)[0m  SELECT "tweets".* FROM "tweets" LIMIT 1
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "mentions" ON "users".id = "mentions".user_id WHERE (("mentions".tweet_id = 1))
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 21:56:46 -0400
+  Processing by MentionsController#index as HTML
+  [1m[36mMention Load (0.4ms)[0m  [1mSELECT "mentions".* FROM "mentions"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered mentions/index.html.erb within layouts/application (98.5ms)
+Completed 200 OK in 111ms (Views: 102.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/mentions/new" for 127.0.0.1 at 2011-04-07 21:56:50 -0400
+  Processing by MentionsController#new as HTML
+Rendered mentions/_form.html.erb (5.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered mentions/new.html.erb within layouts/application (104.6ms)
+Completed 200 OK in 118ms (Views: 108.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/mentions" for 127.0.0.1 at 2011-04-07 21:57:02 -0400
+  Processing by MentionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "mention"=>{"user_id"=>"2", "tweet_id"=>"1"}, "commit"=>"Create Mention"}
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "mentions" ("user_id", "tweet_id", "created_at", "updated_at") VALUES (2, 1, '2011-04-08 01:57:02.094462', '2011-04-08 01:57:02.094462')[0m
+Redirected to http://localhost:3000/mentions/1
+Completed 302 Found in 62ms
+
+
+Started GET "/mentions/1" for 127.0.0.1 at 2011-04-07 21:57:02 -0400
+  Processing by MentionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.7ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mMention Load (0.2ms)[0m  [1mSELECT "mentions".* FROM "mentions" WHERE ("mentions"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered mentions/show.html.erb within layouts/application (104.7ms)
+Completed 200 OK in 120ms (Views: 109.3ms | ActiveRecord: 1.7ms)
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "mentions" ON "users".id = "mentions".user_id WHERE (("mentions".tweet_id = 1))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" INNER JOIN "mentions" ON "tweets".id = "mentions".tweet_id WHERE (("mentions".user_id = 2))

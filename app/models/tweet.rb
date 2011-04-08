@@ -12,6 +12,9 @@
 
 class Tweet < ActiveRecord::Base
   belongs_to :user
+
+  has_many :mentions
+  has_many :users, :through => :mentions
   
   attr_accessible :body
   attr_readonly :user_id

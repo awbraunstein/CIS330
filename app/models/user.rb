@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
 
   has_many :followrequests, :through => :followsusers, :source => :following,
            :conditions => ["approved = ?", false]
+
+  has_many :mentions, :dependent => :destroy
+  has_many :tweetmentions, :through => :mentions, :source => :tweet
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
   attr_accessible :time_zone, :bio, :location, :language, :password, :password_confirmation
