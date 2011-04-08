@@ -13,12 +13,23 @@
 class Tweet < ActiveRecord::Base
   belongs_to :user
 
-  has_many :mentions
+  has_many :mentions, :dependent => :destroy
   has_many :users, :through => :mentions
   
   attr_accessible :body
   attr_readonly :user_id
   validates :body, :length => {:maximum => 140, :minimum =>1}
+
+  after_save :add_mentions
+
+  def add_mentions
+    body.match('@[^ ]* ') do |m|
+      username = m.to_s
+      username = username[1, username.length - 2]
+      uid = User.find_by_username(username).id
+      Mention.create(:user_id => uid, :tweet_id => self.id)
+    end
+  end
 
   def self.all_public_tweets
     all_tweets = []
