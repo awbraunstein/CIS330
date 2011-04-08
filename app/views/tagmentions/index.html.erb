@@ -1,0 +1,25 @@
+<h1>Listing tagmentions</h1>
+
+<table>
+  <tr>
+    <th>Tweet</th>
+    <th>Tag</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tagmentions.each do |tagmention| %>
+  <tr>
+    <td><%= tagmention.tweet_id %></td>
+    <td><%= tagmention.tag_id %></td>
+    <td><%= link_to 'Show', tagmention %></td>
+    <td><%= link_to 'Edit', edit_tagmention_path(tagmention) %></td>
+    <td><%= link_to 'Destroy', tagmention, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tagmention', new_tagmention_path %>

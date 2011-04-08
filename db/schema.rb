@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110408014416) do
+ActiveRecord::Schema.define(:version => 20110408041633) do
 
   create_table "followsusers", :force => true do |t|
     t.integer  "follower_id"
@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(:version => 20110408014416) do
     t.text     "body",       :null => false
     t.integer  "from_id",    :null => false
     t.integer  "to_id",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tagmentions", :force => true do |t|
+    t.integer  "tweet_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "tag"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -8176,3 +8176,43 @@ Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:54:35 -0400
 Rendered mentions/index.html.erb within layouts/application (95.1ms)
 Completed 200 OK in 107ms (Views: 98.4ms | ActiveRecord: 0.8ms)
   [1m[36mMention Load (0.3ms)[0m  [1mSELECT "mentions".* FROM "mentions" WHERE ("mentions"."id" = 1) LIMIT 1[0m
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20110307215224)
+Migrating to CreateTweets (20110307224716)
+Migrating to CreateMessages (20110318001222)
+Migrating to AddPasswordToUsers (20110318035821)
+Migrating to CreateFollowsusers (20110407223157)
+Migrating to CreateMentions (20110408014416)
+Migrating to CreateTags (20110408041546)
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110408041546')
+Migrating to CreateTagmentions (20110408041633)
+  [1m[36mSQL (0.7ms)[0m  [1mCREATE TABLE "tagmentions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tweet_id" integer, "tag_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110408041633')
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("followsusers")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_followsusers_on_follower_id_and_following_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_followsusers_on_following_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_followsusers_on_follower_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("mentions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("messages")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tagmentions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("tags")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tweets")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m

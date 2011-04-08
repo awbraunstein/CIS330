@@ -1,4 +1,8 @@
 Twitter::Application.routes.draw do
+  resources :tagmentions
+
+  resources :tags
+
   resources :mentions
 
   resources :followsusers
