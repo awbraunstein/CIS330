@@ -33,7 +33,17 @@ class UsersController < ApplicationController
     end
   end
 
-    
+  def requests_page
+    if current_user.nil?
+      redirect_to root_path
+    end
+    @followerrequests = current_user.followerrequests
+    @followrequests = current_user.followrequests
+    respond_to do |format|
+      format.html # requests_page.html.erb
+    end
+  end
+
   
   # GET /users/new
   # GET /users/new.xml
