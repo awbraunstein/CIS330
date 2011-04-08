@@ -12,4 +12,7 @@
 <div class="actions">
   <%= f.submit "Login" %>
 </div>
+<div class="actions">
+  <%= link_to "Not on our site? You should be!", :controller => "users", :action => "new", :id => @user %>
+</div>
 <% end %>

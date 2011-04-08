@@ -7,10 +7,21 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<% if current_user.nil? %>
+<div id="login">
+ <%= link_to "Login", :controller =>"sessions", :action => "new", :id => @session %>
+</div>
+<div id="register">
+ <%= link_to "Register", :controller =>"users",:action => "new", :id => @user %>
+</div>
+<% end %>
 <% if !current_user.nil? %>
 <div id="logged_in_user">
 Logged in as
 <%= current_user.username %>
+</div>
+<div id="logout">
+ <%= link_to "Logout", :controller =>"sessions",:action => "destroy", :id => @session %>
 </div>
 <% end %>
 <%= signed_in? %>
