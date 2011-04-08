@@ -23,11 +23,13 @@ class Tweet < ActiveRecord::Base
   after_save :add_mentions
 
   def add_mentions
-    body.match('@[^ ]* ') do |m|
+    body.scan(/@[^ ]* /) do |m|
       username = m.to_s
       username = username[1, username.length - 2]
       uid = User.find_by_username(username).id
-      Mention.create(:user_id => uid, :tweet_id => self.id)
+      if !uid.nil?
+        Mention.create(:user_id => uid, :tweet_id => self.id)
+      end
     end
   end
 

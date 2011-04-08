@@ -7844,3 +7844,335 @@ Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:33:23 -0400
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
 Rendered mentions/index.html.erb within layouts/application (92.5ms)
 Completed 200 OK in 104ms (Views: 95.9ms | ActiveRecord: 2.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'blah') LIMIT 1
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-04-07 22:40:43 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.6ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (92.5ms)
+Completed 200 OK in 141ms (Views: 95.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2011-04-07 22:40:45 -0400
+  Processing by TweetsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/new.html.erb within layouts/application (90.2ms)
+Completed 200 OK in 106ms (Views: 93.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 22:40:56 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/index.html.erb within layouts/application (26.7ms)
+Completed 200 OK in 95ms (Views: 30.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 22:40:56 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/index.html.erb within layouts/application (63.2ms)
+Completed 200 OK in 92ms (Views: 66.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 22:41:12 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.6ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (107.8ms)
+Completed 200 OK in 123ms (Views: 111.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 22:41:13 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.6ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (102.1ms)
+Completed 200 OK in 157ms (Views: 106.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/twwets" for 127.0.0.1 at 2011-04-07 22:41:14 -0400
+
+ActionController::RoutingError (No route matches "/twwets"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-04-07 22:41:15 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.6ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (126.9ms)
+Completed 200 OK in 141ms (Views: 130.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-04-07 22:41:15 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.6ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (99.4ms)
+Completed 200 OK in 115ms (Views: 102.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2011-04-07 22:41:17 -0400
+  Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered tweets/new.html.erb within layouts/application (89.4ms)
+Completed 200 OK in 141ms (Views: 93.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-04-07 22:41:42 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "tweet"=>{"body"=>"@themoderata hi @tart blah blah @notauser"}, "commit"=>"Create Tweet"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (2, '@themoderata hi @tart blah blah @notauser', '2011-04-08 02:41:42.516478', '2011-04-08 02:41:42.516478')[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'themoderata') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "mentions" ("user_id", "tweet_id", "created_at", "updated_at") VALUES (1, 7, '2011-04-08 02:41:42.533803', '2011-04-08 02:41:42.533803')
+Redirected to http://localhost:3000/tweets/7
+Completed 302 Found in 154ms
+
+
+Started GET "/tweets/7" for 127.0.0.1 at 2011-04-07 22:41:42 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 7) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/show.html.erb within layouts/application (91.9ms)
+Completed 200 OK in 110ms (Views: 95.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:41:47 -0400
+  Processing by MentionsController#index as HTML
+  [1m[36mMention Load (0.5ms)[0m  [1mSELECT "mentions".* FROM "mentions"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered mentions/index.html.erb within layouts/application (92.5ms)
+Completed 200 OK in 104ms (Views: 95.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tweets/6" for 127.0.0.1 at 2011-04-07 22:41:53 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 6) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/show.html.erb within layouts/application (121.5ms)
+Completed 200 OK in 138ms (Views: 124.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:41:54 -0400
+  Processing by MentionsController#index as HTML
+  [1m[36mMention Load (0.5ms)[0m  [1mSELECT "mentions".* FROM "mentions"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered mentions/index.html.erb within layouts/application (93.5ms)
+Completed 200 OK in 105ms (Views: 96.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/mentions/6" for 127.0.0.1 at 2011-04-07 22:44:25 -0400
+  Processing by MentionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "id"=>"6"}
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mMention Load (0.1ms)[0m  SELECT "mentions".* FROM "mentions" WHERE ("mentions"."id" = 6) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mDELETE FROM "mentions" WHERE ("mentions"."id" = 6)[0m
+Redirected to http://localhost:3000/mentions
+Completed 302 Found in 20ms
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:44:25 -0400
+  Processing by MentionsController#index as HTML
+  [1m[35mMention Load (0.5ms)[0m  SELECT "mentions".* FROM "mentions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered mentions/index.html.erb within layouts/application (95.2ms)
+Completed 200 OK in 107ms (Views: 98.4ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-04-07 22:44:30 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "tweet"=>{"body"=>"@themoderata hi @tart blah blah @notauser"}, "commit"=>"Create Tweet"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (2, '@themoderata hi @tart blah blah @notauser', '2011-04-08 02:44:30.603833', '2011-04-08 02:44:30.603833')[0m
+Redirected to http://localhost:3000/tweets/8
+Completed 302 Found in 135ms
+
+
+Started GET "/tweets/8" for 127.0.0.1 at 2011-04-07 22:44:30 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 8) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered tweets/show.html.erb within layouts/application (91.7ms)
+Completed 200 OK in 108ms (Views: 94.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:44:40 -0400
+  Processing by MentionsController#index as HTML
+  [1m[35mMention Load (0.6ms)[0m  SELECT "mentions".* FROM "mentions"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered mentions/index.html.erb within layouts/application (93.4ms)
+Completed 200 OK in 142ms (Views: 96.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:44:42 -0400
+  Processing by MentionsController#index as HTML
+  [1m[35mMention Load (0.5ms)[0m  SELECT "mentions".* FROM "mentions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered mentions/index.html.erb within layouts/application (96.2ms)
+Completed 200 OK in 108ms (Views: 99.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:44:45 -0400
+  Processing by MentionsController#index as HTML
+  [1m[35mMention Load (0.5ms)[0m  SELECT "mentions".* FROM "mentions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered mentions/index.html.erb within layouts/application (92.5ms)
+Completed 200 OK in 104ms (Views: 95.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-04-07 22:45:13 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "tweet"=>{"body"=>"@themoderata hi @tart blah blah @notauser"}, "commit"=>"Create Tweet"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (2, '@themoderata hi @tart blah blah @notauser', '2011-04-08 02:45:13.950794', '2011-04-08 02:45:13.950794')[0m
+Redirected to http://localhost:3000/tweets/9
+Completed 302 Found in 135ms
+
+
+Started GET "/tweets/9" for 127.0.0.1 at 2011-04-07 22:45:13 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 9) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered tweets/show.html.erb within layouts/application (92.8ms)
+Completed 200 OK in 109ms (Views: 96.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:45:17 -0400
+  Processing by MentionsController#index as HTML
+  [1m[35mMention Load (0.5ms)[0m  SELECT "mentions".* FROM "mentions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered mentions/index.html.erb within layouts/application (92.3ms)
+Completed 200 OK in 103ms (Views: 95.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:45:21 -0400
+  Processing by MentionsController#index as HTML
+  [1m[35mMention Load (0.5ms)[0m  SELECT "mentions".* FROM "mentions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered mentions/index.html.erb within layouts/application (92.1ms)
+Completed 200 OK in 103ms (Views: 95.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-04-07 22:46:01 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "tweet"=>{"body"=>"@themoderata hi @tart blah blah @notauser"}, "commit"=>"Create Tweet"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (2, '@themoderata hi @tart blah blah @notauser', '2011-04-08 02:46:02.003957', '2011-04-08 02:46:02.003957')[0m
+Redirected to http://localhost:3000/tweets/10
+Completed 302 Found in 103ms
+
+
+Started GET "/tweets/10" for 127.0.0.1 at 2011-04-07 22:46:02 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 10) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered tweets/show.html.erb within layouts/application (123.7ms)
+Completed 200 OK in 140ms (Views: 126.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:46:04 -0400
+  Processing by MentionsController#index as HTML
+  [1m[35mMention Load (0.5ms)[0m  SELECT "mentions".* FROM "mentions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered mentions/index.html.erb within layouts/application (94.4ms)
+Completed 200 OK in 106ms (Views: 97.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-04-07 22:46:34 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.6ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (100.0ms)
+Completed 200 OK in 115ms (Views: 103.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2011-04-07 22:46:38 -0400
+  Processing by TweetsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/new.html.erb within layouts/application (125.4ms)
+Completed 200 OK in 141ms (Views: 128.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-04-07 22:46:39 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "tweet"=>{"body"=>"@themoderata hi @tart blah blah @notauser"}, "commit"=>"Create Tweet"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (2, '@themoderata hi @tart blah blah @notauser', '2011-04-08 02:46:39.413035', '2011-04-08 02:46:39.413035')
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'themoderata') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO "mentions" ("user_id", "tweet_id", "created_at", "updated_at") VALUES (1, 11, '2011-04-08 02:46:39.434668', '2011-04-08 02:46:39.434668')[0m
+Redirected to http://localhost:3000/tweets/11
+Completed 302 Found in 142ms
+
+
+Started GET "/tweets/11" for 127.0.0.1 at 2011-04-07 22:46:39 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 11) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered tweets/show.html.erb within layouts/application (98.7ms)
+Completed 200 OK in 117ms (Views: 102.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:46:43 -0400
+  Processing by MentionsController#index as HTML
+  [1m[35mMention Load (0.5ms)[0m  SELECT "mentions".* FROM "mentions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered mentions/index.html.erb within layouts/application (129.7ms)
+Completed 200 OK in 141ms (Views: 133.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-04-07 22:54:33 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "tweet"=>{"body"=>"@themoderata hi @tart blah blah @notauser"}, "commit"=>"Create Tweet"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mAREL (0.5ms)[0m  [1mINSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (2, '@themoderata hi @tart blah blah @notauser', '2011-04-08 02:54:33.578443', '2011-04-08 02:54:33.578443')[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'themoderata') LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO "mentions" ("user_id", "tweet_id", "created_at", "updated_at") VALUES (1, 12, '2011-04-08 02:54:33.596594', '2011-04-08 02:54:33.596594')
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'tart') LIMIT 1[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO "mentions" ("user_id", "tweet_id", "created_at", "updated_at") VALUES (2, 12, '2011-04-08 02:54:33.637721', '2011-04-08 02:54:33.637721')
+Redirected to http://localhost:3000/tweets/12
+Completed 302 Found in 158ms
+
+
+Started GET "/tweets/12" for 127.0.0.1 at 2011-04-07 22:54:33 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 12) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/show.html.erb within layouts/application (96.1ms)
+Completed 200 OK in 113ms (Views: 99.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/mentions" for 127.0.0.1 at 2011-04-07 22:54:35 -0400
+  Processing by MentionsController#index as HTML
+  [1m[36mMention Load (0.6ms)[0m  [1mSELECT "mentions".* FROM "mentions"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered mentions/index.html.erb within layouts/application (95.1ms)
+Completed 200 OK in 107ms (Views: 98.4ms | ActiveRecord: 0.8ms)
+  [1m[36mMention Load (0.3ms)[0m  [1mSELECT "mentions".* FROM "mentions" WHERE ("mentions"."id" = 1) LIMIT 1[0m
