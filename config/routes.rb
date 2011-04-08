@@ -1,4 +1,6 @@
 Twitter::Application.routes.draw do
+  resources :mentions
+
   resources :followsusers
 
   resources :messages

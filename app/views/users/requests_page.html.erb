@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Username:</b>
+  <%= current_user.username %>
+</p>
+<p>
+  <b>Requests For You:</b>
+  <% if @followerrequests.empty? %>
+  No follow requests for you.
+  <% else %>
+  <ul>
+    <% @followerrequests.each do |r| %>
+    <li><%= r.username %> Would like to follow you!</li>
+    <% end %>
+  </ul>
+  <% end %>
+  
+</p>
+<p>
+  <b>Your Requests:</b>
+  <% if @followrequests.empty? %>
+  All requests to others have been approved.
+  <% else %>
+  <ul>
+    <% @followrequests.each do |r| %>
+    <li><%= r.username %> Has not yet approved your request.</li>
+    <% end %>
+  </ul>
+  <% end %>
+  
+</p>
+
