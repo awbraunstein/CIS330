@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def new
+    redirect_to current_user unless current_user.nil?
   end
 
   def destroy
