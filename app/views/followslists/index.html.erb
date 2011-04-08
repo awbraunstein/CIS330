@@ -1,0 +1,25 @@
+<h1>Listing followslists</h1>
+
+<table>
+  <tr>
+    <th>List</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @followslists.each do |followslist| %>
+  <tr>
+    <td><%= followslist.list_id %></td>
+    <td><%= followslist.user_id %></td>
+    <td><%= link_to 'Show', followslist %></td>
+    <td><%= link_to 'Edit', edit_followslist_path(followslist) %></td>
+    <td><%= link_to 'Destroy', followslist, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Followslist', new_followslist_path %>

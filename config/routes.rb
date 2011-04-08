@@ -1,4 +1,10 @@
 Twitter::Application.routes.draw do
+  resources :inlists
+
+  resources :followslists
+
+  resources :lists
+
   resources :tagmentions
 
   resources :tags

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>List:</b>
+  <%= @inlist.list_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @inlist.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_inlist_path(@inlist) %> |
+<%= link_to 'Back', inlists_path %>
