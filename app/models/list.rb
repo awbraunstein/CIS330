@@ -21,4 +21,24 @@ class List < ActiveRecord::Base
   has_many :users_in_list, :through => :inlists, :source => :user
 
   validates_uniqueness_of :name
+
+  def public_tweets
+    all_tweets = []
+    self.users_in_list.each do |u|
+      if u.privacy == 0
+        all_tweets += u.tweets
+      end
+    end
+    return all_tweets.sort_by! { |t| t.created_at }.reverse 
+  end
+
+  def visible_tweets(user)
+    all_tweets = []
+    self.users_in_list.each do |u|
+      if u.privacy == 0 || user.follows?(u)
+        all_tweets += u.tweets
+      end
+    end
+    return all_tweets.sort_by! { |t| t.created_at }.reverse 
+  end
 end
