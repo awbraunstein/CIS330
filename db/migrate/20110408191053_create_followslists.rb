@@ -1,8 +1,8 @@
 class CreateFollowslists < ActiveRecord::Migration
   def self.up
     create_table :followslists do |t|
-      t.integer :list_id
-      t.integer :user_id
+      t.integer :list_id, :presence => true
+      t.integer :user_id, :presence => true
 
       t.timestamps
     end

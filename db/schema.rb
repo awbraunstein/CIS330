@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110408041633) do
+ActiveRecord::Schema.define(:version => 20110408191113) do
+
+  create_table "followslists", :force => true do |t|
+    t.integer  "list_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "followsusers", :force => true do |t|
     t.integer  "follower_id"
@@ -23,6 +30,21 @@ ActiveRecord::Schema.define(:version => 20110408041633) do
   add_index "followsusers", ["follower_id", "following_id"], :name => "index_followsusers_on_follower_id_and_following_id", :unique => true
   add_index "followsusers", ["follower_id"], :name => "index_followsusers_on_follower_id"
   add_index "followsusers", ["following_id"], :name => "index_followsusers_on_following_id"
+
+  create_table "inlists", :force => true do |t|
+    t.integer  "list_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lists", :force => true do |t|
+    t.string   "name"
+    t.boolean  "private",    :default => false
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mentions", :force => true do |t|
     t.integer  "user_id"
