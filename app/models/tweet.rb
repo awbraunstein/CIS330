@@ -16,4 +16,15 @@ class Tweet < ActiveRecord::Base
   attr_accessible :body
   attr_readonly :user_id
   validates :body, :length => {:maximum => 140, :minimum =>1}
+
+  def self.all_public_tweets
+    all_tweets = []
+    Tweet.all.each do |t|
+      if t.user.privacy == 0
+        all_tweets << t
+      end
+    end
+    return all_tweets.sort_by! { |t| t.created_at }.reverse 
+  end
+
 end

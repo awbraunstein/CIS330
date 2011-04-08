@@ -23,11 +23,13 @@ class User < ActiveRecord::Base
   has_many :tweets, :dependent => :destroy
 
   has_many :followsusers, :foreign_key => "follower_id", :dependent => :destroy
-  has_many :following, :through => :followsusers, :source => :following
-
+  has_many :following, :through => :followsusers, :source => :following,
+           :conditions => ["approved = ?", true]
+  
   has_many :usersfollow, :class_name => "Followsuser",
            :foreign_key => "following_id", :dependent => :destroy
-  has_many :followers, :through => :usersfollow, :source => :follower
+  has_many :followers, :through => :usersfollow, :source => :follower,
+           :conditions => ["approved = ?", true]
   
   has_many :followerrequests, :through => :usersfollow, :source => :follower,
            :conditions => ["approved = ?", false]
@@ -86,6 +88,17 @@ class User < ActiveRecord::Base
 
   def unfollow!(user)
     followsusers.find_by_following_id(user.id).destroy
+  end
+
+  
+  def all_following_tweets
+    all_tweets = []
+    Tweet.all.each do |t|
+      if follows?(t.user)
+        all_tweets << t
+      end
+    end
+    return all_tweets.sort_by! { |t| t.created_at }.reverse 
   end
 
    

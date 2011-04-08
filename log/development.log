@@ -6893,3 +6893,590 @@ Started GET "/requests" for 127.0.0.1 at 2011-04-07 20:00:46 -0400
   [1m[36mSQL (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 'f')))[0m
 Rendered users/requests_page.html.erb within layouts/application (4.9ms)
 Completed 200 OK in 100ms (Views: 8.1ms | ActiveRecord: 0.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1))[0m
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 20:03:47 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.6ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (96.1ms)
+Completed 200 OK in 110ms (Views: 99.5ms | ActiveRecord: 0.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1))[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 'f')))[0m
+
+
+Started POST "/followsusers/1" for 127.0.0.1 at 2011-04-07 20:04:57 -0400
+  Processing by FollowsusersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "id"=>"1"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 1) LIMIT 1[0m
+  [1m[35mAREL (0.7ms)[0m  DELETE FROM "followsusers" WHERE ("followsusers"."id" = 1)
+Redirected to http://localhost:3000/followsusers
+Completed 302 Found in 63ms
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 20:04:58 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.6ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (104.8ms)
+Completed 200 OK in 117ms (Views: 108.5ms | ActiveRecord: 2.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 'f')))[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 1) AND ((approved = 't')))[0m
+
+
+Started GET "/login" for 127.0.0.1 at 2011-04-07 20:07:19 -0400
+  Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered sessions/new.html.erb within layouts/application (101.4ms)
+Completed 200 OK in 128ms (Views: 127.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-04-07 20:07:19 -0400
+  Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 70ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:07:19 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (86.9ms)
+Completed 200 OK in 98ms (Views: 90.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-04-07 20:07:19 -0400
+  Processing by SessionsController#destroy as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 68ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:07:19 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (1.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (76.7ms)
+Completed 200 OK in 91ms (Views: 80.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/requests" for 127.0.0.1 at 2011-04-07 20:07:23 -0400
+  Processing by UsersController#requests_page as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Redirected to http://localhost:3000/
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Completed   in 69ms
+
+NoMethodError (undefined method `followerrequests' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `requests_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.3ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.1ms)
+
+
+Started GET "/requests" for 127.0.0.1 at 2011-04-07 20:07:26 -0400
+  Processing by UsersController#requests_page as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Redirected to http://localhost:3000/
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Completed   in 73ms
+
+NoMethodError (undefined method `followerrequests' for nil:NilClass):
+  app/controllers/users_controller.rb:40:in `requests_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.6ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.9ms)
+
+
+Started GET "/requests" for 127.0.0.1 at 2011-04-07 20:07:57 -0400
+  Processing by UsersController#requests_page as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Redirected to http://localhost:3000/
+Completed 302 Found in 83ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:07:57 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (79.2ms)
+Completed 200 OK in 90ms (Views: 83.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:08:54 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.5ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (80.2ms)
+Completed 200 OK in 97ms (Views: 88.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/requests" for 127.0.0.1 at 2011-04-07 20:08:55 -0400
+  Processing by UsersController#requests_page as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed   in 84ms
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/users_controller.rb:39:in `requests_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.8ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.9ms)
+
+
+Started GET "/requests" for 127.0.0.1 at 2011-04-07 20:08:55 -0400
+  Processing by UsersController#requests_page as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Redirected to http://localhost:3000/
+Completed   in 77ms
+
+ArgumentError (wrong number of arguments (1 for 0)):
+  app/controllers/users_controller.rb:39:in `requests_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.5ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.2ms)
+
+
+Started GET "/requests" for 127.0.0.1 at 2011-04-07 20:26:31 -0400
+  Processing by UsersController#requests_page as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 69ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:26:31 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.4ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (79.9ms)
+Completed 200 OK in 104ms (Views: 93.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:30:17 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (165.3ms)
+Completed 200 OK in 178ms (Views: 168.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:30:49 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (78.5ms)
+Completed 200 OK in 91ms (Views: 83.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:30:58 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (80.0ms)
+Completed 200 OK in 91ms (Views: 83.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:31:23 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (85.3ms)
+Completed 200 OK in 98ms (Views: 89.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/l" for 127.0.0.1 at 2011-04-07 20:31:23 -0400
+
+ActionController::RoutingError (No route matches "/l"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-04-07 20:31:24 -0400
+  Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered sessions/new.html.erb within layouts/application (79.0ms)
+Completed 200 OK in 161ms (Views: 160.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-04-07 20:31:42 -0400
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "session"=>{"username"=>"private", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'private') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 81ms
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-04-07 20:31:43 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '4') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/show.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 92ms (Views: 18.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 20:32:07 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/index.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 95ms (Views: 32.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:33:01 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (112.9ms)
+Completed 200 OK in 130ms (Views: 118.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:33:01 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (91.0ms)
+Completed 200 OK in 104ms (Views: 95.5ms | ActiveRecord: 0.7ms)
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets"
+
+
+Started GET "/test" for 127.0.0.1 at 2011-04-07 20:42:49 -0400
+
+ActionController::RoutingError (No route matches "/test"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-04-07 20:42:50 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (92.2ms)
+Completed 200 OK in 149ms (Views: 141.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2011-04-07 20:42:51 -0400
+  Processing by TweetsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered tweets/new.html.erb within layouts/application (117.5ms)
+Completed 200 OK in 147ms (Views: 132.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-04-07 20:42:55 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "tweet"=>{"body"=>"fadslkjf"}, "commit"=>"Create Tweet"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mAREL (29.3ms)[0m  [1mINSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (4, 'fadslkjf', '2011-04-08 00:42:55.194894', '2011-04-08 00:42:55.194894')[0m
+Redirected to http://localhost:3000/tweets/1
+Completed 302 Found in 145ms
+
+
+Started GET "/tweets/1" for 127.0.0.1 at 2011-04-07 20:42:55 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered tweets/show.html.erb within layouts/application (96.7ms)
+Completed 200 OK in 122ms (Views: 108.6ms | ActiveRecord: 29.9ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-04-07 20:42:58 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.5ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (95.0ms)
+Completed 200 OK in 106ms (Views: 98.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2011-04-07 20:43:00 -0400
+  Processing by TweetsController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered tweets/new.html.erb within layouts/application (93.5ms)
+Completed 200 OK in 107ms (Views: 98.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-04-07 20:43:02 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "tweet"=>{"body"=>"asdfasdfasd"}, "commit"=>"Create Tweet"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (4, 'asdfasdfasd', '2011-04-08 00:43:02.713577', '2011-04-08 00:43:02.713577')
+Redirected to http://localhost:3000/tweets/2
+Completed 302 Found in 102ms
+
+
+Started GET "/tweets/2" for 127.0.0.1 at 2011-04-07 20:43:02 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered tweets/show.html.erb within layouts/application (98.3ms)
+Completed 200 OK in 113ms (Views: 102.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 20:43:07 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/index.html.erb within layouts/application (65.2ms)
+Completed 200 OK in 93ms (Views: 68.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/u" for 127.0.0.1 at 2011-04-07 20:43:14 -0400
+
+ActionController::RoutingError (No route matches "/u"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2011-04-07 20:43:14 -0400
+  Processing by SessionsController#destroy as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 36ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:43:14 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.5ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (86.2ms)
+Completed 200 OK in 98ms (Views: 89.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/l" for 127.0.0.1 at 2011-04-07 20:43:19 -0400
+
+ActionController::RoutingError (No route matches "/l"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2011-04-07 20:43:19 -0400
+  Processing by SessionsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" IS NULL) LIMIT 1
+Rendered sessions/new.html.erb within layouts/application (79.5ms)
+Completed 200 OK in 101ms (Views: 100.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2011-04-07 20:43:22 -0400
+  Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "session"=>{"username"=>"tart", "password"=>"[FILTERED]"}, "commit"=>"Login"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'tart') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 94ms
+
+
+Started GET "/users/2" for 127.0.0.1 at 2011-04-07 20:43:22 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = '2') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (54.3ms)
+Completed 200 OK in 100ms (Views: 57.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/tweets" for 127.0.0.1 at 2011-04-07 20:43:26 -0400
+  Processing by TweetsController#index as HTML
+  [1m[35mTweet Load (0.5ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered tweets/index.html.erb within layouts/application (105.8ms)
+Completed 200 OK in 119ms (Views: 108.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/tweets/new" for 127.0.0.1 at 2011-04-07 20:43:27 -0400
+  Processing by TweetsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/new.html.erb within layouts/application (92.8ms)
+Completed 200 OK in 106ms (Views: 97.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/tweets" for 127.0.0.1 at 2011-04-07 20:43:33 -0400
+  Processing by TweetsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "tweet"=>{"body"=>"tartartart"}, "commit"=>"Create Tweet"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO "tweets" ("user_id", "body", "created_at", "updated_at") VALUES (2, 'tartartart', '2011-04-08 00:43:33.785077', '2011-04-08 00:43:33.785077')
+Redirected to http://localhost:3000/tweets/3
+Completed 302 Found in 99ms
+
+
+Started GET "/tweets/3" for 127.0.0.1 at 2011-04-07 20:43:33 -0400
+  Processing by TweetsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/show.html.erb within layouts/application (100.9ms)
+Completed 200 OK in 118ms (Views: 104.2ms | ActiveRecord: 1.1ms)
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mTweet Load (2.8ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 3) LIMIT 1
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mTweet Load (0.5ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT "tweets".* FROM "tweets"
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 3)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 2)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1
+  [1m[36mFollowsuser Load (0.3ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.2ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-07 20:55:41 -0400
+  Processing by TweetsController#index as HTML
+  [1m[36mTweet Load (1.4ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered tweets/index.html.erb within layouts/application (109.2ms)
+Completed 200 OK in 171ms (Views: 113.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-07 20:55:42 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered users/index.html.erb within layouts/application (67.8ms)
+Completed 200 OK in 95ms (Views: 71.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/requests" for 127.0.0.1 at 2011-04-07 20:55:54 -0400
+  Processing by UsersController#requests_page as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 2) AND ((approved = 'f')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 2) AND ((approved = 'f')))[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 'f')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 'f')))[0m
+Rendered users/requests_page.html.erb within layouts/application (85.6ms)
+Completed 200 OK in 188ms (Views: 88.6ms | ActiveRecord: 1.1ms)
+  [1m[36mUser Load (4.2ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 'f')))
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 20:56:59 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[35mFollowsuser Load (0.5ms)[0m  SELECT "followsusers".* FROM "followsusers"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+Rendered followsusers/index.html.erb within layouts/application (104.4ms)
+Completed 200 OK in 117ms (Views: 107.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/followsusers/6" for 127.0.0.1 at 2011-04-07 20:57:10 -0400
+  Processing by FollowsusersController#destroy as HTML
+  Parameters: {"authenticity_token"=>"dByo7myk646klWjVnNMgBmYpIXA8H9do3EisuBhFPYQ=", "id"=>"6"}
+  [1m[35mSQL (0.5ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."id" = 6) LIMIT 1[0m
+  [1m[35mAREL (0.5ms)[0m  DELETE FROM "followsusers" WHERE ("followsusers"."id" = 6)
+Redirected to http://localhost:3000/followsusers
+Completed 302 Found in 186ms
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 20:57:10 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (0.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (104.6ms)
+Completed 200 OK in 118ms (Views: 108.9ms | ActiveRecord: 1.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
+  [1m[35mFollowsuser Load (0.1ms)[0m  SELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1
+  [1m[36mAREL (0.6ms)[0m  [1mINSERT INTO "followsusers" ("follower_id", "following_id", "approved", "created_at", "updated_at") VALUES (1, 2, 't', '2011-04-08 00:57:17.513676', '2011-04-08 00:57:17.513676')[0m
+
+
+Started GET "/followsusers" for 127.0.0.1 at 2011-04-07 20:57:20 -0400
+  Processing by FollowsusersController#index as HTML
+  [1m[36mFollowsuser Load (1.5ms)[0m  [1mSELECT "followsusers".* FROM "followsusers"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+Rendered followsusers/index.html.erb within layouts/application (99.0ms)
+Completed 200 OK in 151ms (Views: 102.5ms | ActiveRecord: 1.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets"[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers".follower_id = 1) AND ("followsusers"."following_id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 'f')))[0m

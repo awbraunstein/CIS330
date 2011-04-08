@@ -36,6 +36,8 @@ class UsersController < ApplicationController
   def requests_page
     if current_user.nil?
       redirect_to root_path
+      flash[:notice] = "You must be logged in to view requests"
+      return
     end
     @followerrequests = current_user.followerrequests
     @followrequests = current_user.followrequests
