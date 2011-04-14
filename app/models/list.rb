@@ -29,7 +29,7 @@ class List < ActiveRecord::Base
         all_tweets += u.tweets
       end
     end
-    return all_tweets.sort_by! { |t| t.created_at }.reverse 
+    return all_tweets.sort_by { |t| t.created_at }.reverse 
   end
 
   def visible_tweets(user)
@@ -39,6 +39,6 @@ class List < ActiveRecord::Base
         all_tweets += u.tweets
       end
     end
-    return all_tweets.sort_by! { |t| t.created_at }.reverse 
+    return all_tweets.sort_by { |t| t.created_at }.reverse 
   end
 end
