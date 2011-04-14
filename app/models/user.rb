@@ -124,8 +124,8 @@ class User < ActiveRecord::Base
   
   def all_following_tweets
     all_tweets = []
-    Tweet.all.each do |t|
-      if follows?(t.user)
+    self.following.each do |u|
+      u.tweets.each do |t|
         all_tweets << t
       end
     end
