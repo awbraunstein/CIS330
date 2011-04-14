@@ -8397,6 +8397,7 @@ Migrating to CreateInlists (20110408191113)
   [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
   [1m[35mTweet Load (0.5ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 2)
   [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 3)[0m
+<<<<<<< HEAD
   [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
   [1m[35mSQL (0.3ms)[0m   SELECT name
  FROM sqlite_master
@@ -8409,3 +8410,440 @@ Migrating to CreateInlists (20110408191113)
   [1m[35mSQL (0.3ms)[0m   SELECT name
  FROM sqlite_master
  WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+=======
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-14 13:41:00 -0400
+  Processing by SessionsController#new as HTML
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 337ms
+
+
+Started GET "/profile" for 127.0.0.1 at 2011-04-14 13:41:02 -0400
+
+ActionController::RoutingError (No route matches "/profile"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-14 13:41:02 -0400
+  Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 80ms
+
+
+Started GET "/profile/" for 127.0.0.1 at 2011-04-14 13:41:02 -0400
+
+ActionController::RoutingError (No route matches "/profile"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/profile/test" for 127.0.0.1 at 2011-04-14 13:41:02 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"test"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'test') LIMIT 1
+Completed   in 73ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-14 13:41:07 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (26.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/index.html.erb within layouts/application (57.0ms)
+Completed 200 OK in 435ms (Views: 344.3ms | ActiveRecord: 27.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-04-14 13:41:09 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = '1') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 160ms (Views: 84.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/p" for 127.0.0.1 at 2011-04-14 13:41:10 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"p"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'p') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 0) LIMIT 1[0m
+Completed   in 72ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with ID=p):
+  app/controllers/users_controller.rb:18:in `show'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.5ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.6ms)
+
+
+Started GET "/profi" for 127.0.0.1 at 2011-04-14 13:41:12 -0400
+
+ActionController::RoutingError (No route matches "/profi"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/profile." for 127.0.0.1 at 2011-04-14 13:41:12 -0400
+
+ActionController::RoutingError (No route matches "/profile."):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/profile" for 127.0.0.1 at 2011-04-14 13:41:13 -0400
+
+ActionController::RoutingError (No route matches "/profile"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/profile/" for 127.0.0.1 at 2011-04-14 13:41:13 -0400
+
+ActionController::RoutingError (No route matches "/profile"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/profile/tart" for 127.0.0.1 at 2011-04-14 13:41:14 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"tart"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'tart') LIMIT 1
+  [1m[36mTweet Load (1.0ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 2)[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/user_page.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 284ms (Views: 41.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-14 13:42:11 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/index.html.erb within layouts/application (53.5ms)
+Completed 200 OK in 98ms (Views: 61.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-14 13:43:12 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/index.html.erb within layouts/application (55.9ms)
+Completed 200 OK in 124ms (Views: 59.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/u" for 127.0.0.1 at 2011-04-14 13:43:15 -0400
+
+ActionController::RoutingError (No route matches "/u"):
+  
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-04-14 13:43:15 -0400
+  Processing by SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Redirected to http://localhost:3000/users/4
+Completed 302 Found in 119ms
+
+
+Started GET "/users/4" for 127.0.0.1 at 2011-04-14 13:43:15 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = '4') LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/show.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 87ms (Views: 15.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/profile/tart" for 127.0.0.1 at 2011-04-14 13:43:17 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"tart"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'tart') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 1)[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 4)
+Rendered users/user_page.html.erb within layouts/application (58.2ms)
+Completed   in 233ms
+
+ActionView::Template::Error (undefined method `name' for #<Tweet:0x00000101103798>):
+    12:     <% @followtweets.each do |t| %>
+    13:     <li>
+    14:       <td><%= t.body %></td>
+    15:       <td><%= t.name %></td>
+    16:     </li>
+    17:     <% end %>
+    18:   </ul>
+  app/views/users/user_page.html.erb:15:in `block in _app_views_users_user_page_html_erb___3179117756996522081_2154560460__1321086214459497912'
+  app/views/users/user_page.html.erb:12:in `each'
+  app/views/users/user_page.html.erb:12:in `_app_views_users_user_page_html_erb___3179117756996522081_2154560460__1321086214459497912'
+  app/controllers/users_controller.rb:31:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  [1m[36mTweet Load (0.8ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 2)[0m
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (7.5ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (12.1ms)
+  [1m[36mTweet Load (0.8ms)[0m  [1mSELECT "tweets".* FROM "tweets" LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets" LIMIT 1[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT "tweets".* FROM "tweets" LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+
+
+Started GET "/profile/tart" for 127.0.0.1 at 2011-04-14 13:45:52 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"tart"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'tart') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 1)
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 4)[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered users/user_page.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 150ms (Views: 11.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/profile/ta" for 127.0.0.1 at 2011-04-14 13:47:16 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"ta"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'ta') LIMIT 1
+Completed   in 71ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started GET "/profile/themod" for 127.0.0.1 at 2011-04-14 13:47:17 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"themod"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'themod') LIMIT 1[0m
+Completed   in 71ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (27.9ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (32.1ms)
+
+
+Started GET "/profile/themoderata" for 127.0.0.1 at 2011-04-14 13:47:18 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"themoderata"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'themoderata') LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mTweet Load (0.4ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 2)
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 3)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/user_page.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 155ms (Views: 16.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/profile/tes" for 127.0.0.1 at 2011-04-14 13:47:22 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"tes"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'tes') LIMIT 1[0m
+Completed   in 70ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (32.8ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (37.7ms)
+
+
+Started GET "/profile/test" for 127.0.0.1 at 2011-04-14 13:47:22 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"test"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'test') LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 5) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/user_page.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 138ms (Views: 8.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-14 13:50:49 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/index.html.erb within layouts/application (29.4ms)
+Completed 200 OK in 97ms (Views: 32.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2011-04-14 13:50:50 -0400
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/index.html.erb within layouts/application (29.3ms)
+Completed 200 OK in 96ms (Views: 32.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2011-04-14 13:50:56 -0400
+  Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = '1') LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered users/show.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 88ms (Views: 16.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/profile/test" for 127.0.0.1 at 2011-04-14 13:50:58 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"test"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'test') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 5) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/user_page.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 144ms (Views: 8.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/profile/test" for 127.0.0.1 at 2011-04-14 13:50:59 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"test"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'test') LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 5) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered users/user_page.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 112ms (Views: 8.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/profile/s" for 127.0.0.1 at 2011-04-14 13:50:59 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"s"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 's') LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 6) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+Rendered users/user_page.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 113ms (Views: 7.8ms | ActiveRecord: 0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 1)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mTweet Load (0.6ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 2)
+
+
+Started GET "/profile/s" for 127.0.0.1 at 2011-04-14 13:55:10 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"s"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 's') LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 6) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered users/user_page.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 113ms (Views: 8.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/profile/th" for 127.0.0.1 at 2011-04-14 13:55:14 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"th"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."username" = 'th') LIMIT 1
+Completed   in 73ms
+
+NoMethodError (undefined method `tweets' for nil:NilClass):
+  app/controllers/users_controller.rb:29:in `user_page'
+
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.4ms)
+Rendered /Users/zach/.rvm/gems/ruby-1.9.2-p136/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+
+
+Started GET "/profile/themoderata" for 127.0.0.1 at 2011-04-14 13:55:15 -0400
+  Processing by UsersController#user_page as HTML
+  Parameters: {"username"=>"themoderata"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."username" = 'themoderata') LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mTweet Load (0.4ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 2)[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets".user_id = 3)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+Rendered users/user_page.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 152ms (Views: 15.5ms | ActiveRecord: 1.8ms)
+>>>>>>> caf1747514e7176d09f8b38cfca0cc7183b90adc
