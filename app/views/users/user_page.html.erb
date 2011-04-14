@@ -12,7 +12,7 @@
     <% @followtweets.each do |t| %>
     <li>
       <td><%= t.body %></td>
-      <td><%= t.name %></td>
+      <td><%= link_to t.user.username, t.user%></td>
     </li>
     <% end %>
   </ul>
