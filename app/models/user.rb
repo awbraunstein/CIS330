@@ -129,7 +129,7 @@ class User < ActiveRecord::Base
         all_tweets << t
       end
     end
-    return all_tweets.sort_by! { |t| t.created_at }.reverse 
+    return all_tweets.sort_by { |t| t.created_at }.reverse 
   end
 
    
