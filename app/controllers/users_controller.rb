@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @tweets = @user.tweets
     @followtweets = @user.all_following_tweets
+    @alltweets = []
+    @alltweets = @alltweets+@tweets
+    @alltweets = @alltweets+@followtweets
+    @alltweets = @alltweets.sort_by{ |t| t.created_at }.reverse
     respond_to do |format|
       format.html # user_page.html.erb
       format.xml  { render :xml => @user }

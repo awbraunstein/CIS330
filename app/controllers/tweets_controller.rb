@@ -76,7 +76,7 @@ class TweetsController < ApplicationController
     @tweet.destroy
 
     respond_to do |format|
-      format.html { redirect_to(tweets_url) }
+      format.html { redirect_to :back }
       format.xml  { head :ok }
     end
   end

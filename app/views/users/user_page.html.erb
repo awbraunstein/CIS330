@@ -1,21 +1,46 @@
 <p id="notice"><%= notice %></p>
 
+<% if !current_user.follows?(@user) %>
+
+<% end %>
+
+<% if current_user == @user %>
+<%= link_to "requests", requests_url  %>
+<% end %>
+
+<h1>
 <p>
   <b>Username:</b>
   <%= @user.username %>
 </p>
-
-
+</h1>
 <p>
-  <b>Tweets:</b>
+  <h3><b>Tweets:</b></h3>
   <ul>
-    <% @followtweets.each do |t| %>
+    <% if current_user == @user %>
+    <% @alltweets.each do |t| %>
     <li>
-      <td><%= t.body %></td>
-      <td><%= link_to t.user.username, t.user%></td>
-      <td><%= t.user.username %></td>
+     <h1> <td><%= t.body %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= link_to t.user.username, user_tweets_url(:username => t.user.username)%></td>
+      <% if current_user == t.user %>
+      <td><%= link_to "Delete Tweet", t, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
     </li>
     <% end %>
+    <% else %>
+    <% @tweets.each do |t| %>
+    <li>
+      <td><%= t.body %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= link_to t.user.username, user_tweets_url(:username => t.user.username)%></td>
+      <% if current_user == t.user %>
+      <td><%= link_to "Delete Tweet", t, :confirm => 'Are you sure?', :method => :delete %></td></h1>
+      <% end %>
+    </li>
+    <% end %>
+    <% end %>
+    
   </ul>
   
 </p>

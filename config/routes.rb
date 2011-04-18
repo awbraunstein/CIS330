@@ -24,8 +24,8 @@ Twitter::Application.routes.draw do
   match "register" => "users#new"
   match "login" => "sessions#new"
   match "logout" => "sessions#destroy"
-  match "profile/:username" => "Users#user_page", :as => "user_tweets"
-  match ":username/profile" => "Users#show", :as => "user_profile"
+  match "profile/:username" => "users#user_page", :as => "user_tweets"
+  match ":username/profile" => "users#show", :as => "user_profile"
   match "requests" => "users#requests_page"
   
   get "home/index"
@@ -39,7 +39,7 @@ Twitter::Application.routes.draw do
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  # This route can be invoked with \purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
