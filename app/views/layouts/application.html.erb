@@ -7,6 +7,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<%= image_tag("twitter_bird_dead.jpg") %>
 <% if current_user.nil? %>
 <div id="login">
  <%= link_to "Login", :controller =>"sessions", :action => "new", :id => @session %>
@@ -27,16 +28,8 @@ Logged in as
  <%= link_to "Home", user_tweets_url(:username => current_user.username) %>
 </div>
 <% end %>
-<%= signed_in? %>
   
-  <% flash.each do |key, value| %>
-  <div class="flash <%= key %>"><%= value %></div>
-  <% end %>
 <%= yield %>
 
-<p>Debug:<br>
-current_user
-<%= debug current_user %>
-</p>
 </body>
 </html>

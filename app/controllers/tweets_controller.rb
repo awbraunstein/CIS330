@@ -44,7 +44,7 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       if @tweet.save
-        format.html { redirect_to(@tweet, :notice => 'Tweet was successfully created.') }
+        format.html { redirect_to(:back, :notice => 'Tweet was successfully created.') }
         format.xml  { render :xml => @tweet, :status => :created, :location => @tweet }
       else
         format.html { render :action => "new" }

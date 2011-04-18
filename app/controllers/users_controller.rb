@@ -25,16 +25,21 @@ class UsersController < ApplicationController
   end
 
   def user_page
-    @user = User.find_by_username(params[:username])
-    @tweets = @user.tweets
-    @followtweets = @user.all_following_tweets
-    @alltweets = []
-    @alltweets = @alltweets+@tweets
-    @alltweets = @alltweets+@followtweets
-    @alltweets = @alltweets.sort_by{ |t| t.created_at }.reverse
-    respond_to do |format|
-      format.html # user_page.html.erb
-      format.xml  { render :xml => @user }
+    if current_user.nil?
+        redirect_to login_url()
+    else
+      @tweet = Tweet.new
+      @user = User.find_by_username(params[:username])
+      @tweets = @user.tweets
+      @followtweets = @user.all_following_tweets
+      @alltweets = []
+      @alltweets = @alltweets+@tweets
+      @alltweets = @alltweets+@followtweets
+      @alltweets = @alltweets.sort_by{ |t| t.created_at }.reverse
+      respond_to do |format|
+        format.html # user_page.html.erb
+        format.xml  { render :xml => @user }
+      end
     end
   end
 
@@ -76,7 +81,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in @user
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+        format.html { redirect_to(user_tweets_url(@user), :notice => 'User was successfully created.') }
         format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
         format.html { render :action => "new" }
