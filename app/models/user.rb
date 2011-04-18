@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110408191113
+# Schema version: 20110418222911
 #
 # Table name: users
 #
@@ -20,7 +20,7 @@
 #
 
 # == Schema Information
-# Schema version: 20110307224716
+# Schema version: 20110408191113
 #
 # Table name: users
 #
@@ -31,12 +31,13 @@
 #  email      :string(255)
 #  privacy    :integer
 #  webpage    :string(255)
-#  time_zone  :string
+#  time_zone  :string(255)
 #  bio        :text
 #  location   :string(255)
 #  language   :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  password   :string(255)
 #
 require 'digest/sha1'
 
@@ -67,6 +68,16 @@ class User < ActiveRecord::Base
 
   has_many :followslists, :dependent => :destroy
   has_many :listsfollowing, :through => :followslists, :source => :user
+
+  has_many :messagerelation_senders, :class_name => "Messagerelation",
+           :foreign_key => :from_id, :dependent => :destroy
+  has_many :sent_messages, :through => :messagerelation_senders,
+           :source => :message
+
+  has_many :messagerelation_receivers, :class_name => "Messagerelation",
+           :foreign_key => :to_id, :dependent => :destroy
+  has_many :received_messages, :through => :messagerelation_receivers,
+           :source => :message
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
   attr_accessible :time_zone, :bio, :location, :language, :password, :password_confirmation

@@ -1,4 +1,6 @@
 Twitter::Application.routes.draw do
+  resources :messagerelations
+
   resources :inlists
 
   resources :followslists
