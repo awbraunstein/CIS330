@@ -47,7 +47,7 @@ class TweetsController < ApplicationController
         format.html { redirect_to(:back, :notice => 'Tweet was successfully created.') }
         format.xml  { render :xml => @tweet, :status => :created, :location => @tweet }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(:back, :notice => 'Tweet was invalid.') }
         format.xml  { render :xml => @tweet.errors, :status => :unprocessable_entity }
       end
     end

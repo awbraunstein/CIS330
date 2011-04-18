@@ -24,6 +24,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def relationships
+    @user = User.find_by_username(params[:id])
+    if @user.nil?
+      @user = User.find(params[:id])
+    end
+    @followers = @user.followers
+    @following = @user.following
+    respond_to do |format|
+      format.html # relationships.html.erb
+      format.xml {render :xml => @user }
+    end
+  end
+
+  
   def user_page
     if current_user.nil?
         redirect_to login_url()

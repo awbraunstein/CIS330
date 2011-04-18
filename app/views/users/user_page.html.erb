@@ -1,17 +1,30 @@
 <p id="notice"><%= notice %></p>
 <% if current_user == @user %>
+<h3>
+<p>
 <%= link_to "requests", requests_url  %>
+</p>
 <% end %>
 
 <% if current_user.follows?(@user) || @user.privacy == 0 %>
 <%= link_to "profile", user_profile_url(@user.id) %>
 <% end %>
-<h1>
+</h3>
+<h3>
   <p>
     <b>Username:</b>
-    <%= @user.username %>
+    <%= @user.username %>|
+    <b>Followers:</b>
+    <%= @user.followers.count %>|
+    <b>Following:</b>
+    <%= @user.following.count %>|
+    <b>Tweets:</b>
+    <%= @user.tweets.count %>
   </p>
-</h1>
+  <%= link_to "See Relationships", user_relationships_url(@user.id) %>
+  <p>
+  </p>
+</h3>
 <% if current_user == @user %>
 <p>
   <h2>What's going on?</h2>

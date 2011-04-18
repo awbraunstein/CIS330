@@ -27,7 +27,7 @@ Twitter::Application.routes.draw do
   match "profile/:username" => "users#user_page", :as => "user_tweets"
   match ":id/profile" => "users#show", :as => "user_profile"
   match "requests" => "users#requests_page"
-  
+  match ":id/relationships" => "users#relationships", :as => "user_relationships"
   get "home/index"
   
   # The priority is based upon order of creation:
