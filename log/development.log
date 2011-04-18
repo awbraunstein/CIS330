@@ -8940,3 +8940,57 @@ Migrating to CreateMessagerelations (20110418221328)
   [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tags")
   [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("tweets")[0m
   [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36mSQL (0.8ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20110307215224)
+Migrating to CreateTweets (20110307224716)
+Migrating to CreateMessages (20110318001222)
+Migrating to AddPasswordToUsers (20110318035821)
+Migrating to CreateFollowsusers (20110407223157)
+Migrating to CreateMentions (20110408014416)
+Migrating to CreateTags (20110408041546)
+Migrating to CreateTagmentions (20110408041633)
+Migrating to CreateLists (20110408190956)
+Migrating to CreateFollowslists (20110408191053)
+Migrating to CreateInlists (20110408191113)
+Migrating to CreateMessagerelations (20110418222911)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "messagerelations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "message_id" integer, "from_id" integer, "to_id" integer, "read" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110418222911')
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("followslists")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("followsusers")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_info('index_followsusers_on_follower_id_and_following_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_followsusers_on_following_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_followsusers_on_follower_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("inlists")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("lists")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("mentions")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("messagerelations")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("messages")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tagmentions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("tags")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tweets")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
