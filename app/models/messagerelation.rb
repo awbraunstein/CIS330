@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110418222911
+# Schema version: 20110418223441
 #
 # Table name: messagerelations
 #
@@ -7,7 +7,7 @@
 #  message_id :integer
 #  from_id    :integer
 #  to_id      :integer
-#  read       :boolean
+#  read       :boolean         default(TRUE)
 #  created_at :datetime
 #  updated_at :datetime
 #

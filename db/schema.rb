@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110418222911) do
+ActiveRecord::Schema.define(:version => 20110418223441) do
 
   create_table "followslists", :force => true do |t|
     t.integer  "list_id"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20110418222911) do
     t.integer  "message_id"
     t.integer  "from_id"
     t.integer  "to_id"
-    t.boolean  "read"
+    t.boolean  "read",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,8 +65,6 @@ ActiveRecord::Schema.define(:version => 20110418222911) do
   create_table "messages", :force => true do |t|
     t.string   "subject",    :null => false
     t.text     "body",       :null => false
-    t.integer  "from_id",    :null => false
-    t.integer  "to_id",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

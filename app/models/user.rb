@@ -68,6 +68,16 @@ class User < ActiveRecord::Base
 
   has_many :followslists, :dependent => :destroy
   has_many :listsfollowing, :through => :followslists, :source => :user
+
+  has_many :messagerelation_senders, :class_name => "Messagerelation",
+           :foreign_key => :from_id, :dependent => :destroy
+  has_many :sent_messages, :through => :messagerelation_senders,
+           :source => :message
+
+  has_many :messagerelation_receivers, :class_name => "Messagerelation",
+           :foreign_key => :to_id, :dependent => :destroy
+  has_many :received_messages, :through => :messagerelation_receivers,
+           :source => :message
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
   attr_accessible :time_zone, :bio, :location, :language, :password, :password_confirmation
