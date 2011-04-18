@@ -13,7 +13,9 @@
 #
 
 class Message < ActiveRecord::Base
-  
+  has_one :messagerelation
+  has_one :from, :through => :messagerelation
+  has_one :to, :through => :messagerelation
   
   
   validates :subject, :presence => true

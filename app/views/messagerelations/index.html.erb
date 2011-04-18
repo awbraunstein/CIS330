@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Message</th>
     <th>From</th>
     <th>To</th>
     <th>Read</th>
@@ -12,6 +13,7 @@
 
 <% @messagerelations.each do |messagerelation| %>
   <tr>
+    <td><%= messagerelation.message_id %></td>
     <td><%= messagerelation.from_id %></td>
     <td><%= messagerelation.to_id %></td>
     <td><%= messagerelation.read %></td>
