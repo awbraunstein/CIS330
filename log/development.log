@@ -8847,3 +8847,11 @@ Started GET "/profile/themoderata" for 127.0.0.1 at 2011-04-14 13:55:15 -0400
 Rendered users/user_page.html.erb within layouts/application (12.8ms)
 Completed 200 OK in 152ms (Views: 15.5ms | ActiveRecord: 1.8ms)
 >>>>>>> caf1747514e7176d09f8b38cfca0cc7183b90adc
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m

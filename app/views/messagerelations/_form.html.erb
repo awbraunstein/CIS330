@@ -1,0 +1,29 @@
+<%= form_for(@messagerelation) do |f| %>
+  <% if @messagerelation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@messagerelation.errors.count, "error") %> prohibited this messagerelation from being saved:</h2>
+
+      <ul>
+      <% @messagerelation.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :from_id %><br />
+    <%= f.text_field :from_id %>
+  </div>
+  <div class="field">
+    <%= f.label :to_id %><br />
+    <%= f.text_field :to_id %>
+  </div>
+  <div class="field">
+    <%= f.label :read %><br />
+    <%= f.check_box :read %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

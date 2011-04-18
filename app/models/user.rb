@@ -18,26 +18,6 @@
 #  updated_at :datetime
 #  password   :string(255)
 #
-
-# == Schema Information
-# Schema version: 20110307224716
-#
-# Table name: users
-#
-#  id         :integer         not null, primary key
-#  username   :string(255)
-#  firstname  :string(255)
-#  lastname   :string(255)
-#  email      :string(255)
-#  privacy    :integer
-#  webpage    :string(255)
-#  time_zone  :string
-#  bio        :text
-#  location   :string(255)
-#  language   :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#
 require 'digest/sha1'
 
 class User < ActiveRecord::Base

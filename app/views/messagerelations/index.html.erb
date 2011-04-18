@@ -1,0 +1,27 @@
+<h1>Listing messagerelations</h1>
+
+<table>
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Read</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @messagerelations.each do |messagerelation| %>
+  <tr>
+    <td><%= messagerelation.from_id %></td>
+    <td><%= messagerelation.to_id %></td>
+    <td><%= messagerelation.read %></td>
+    <td><%= link_to 'Show', messagerelation %></td>
+    <td><%= link_to 'Edit', edit_messagerelation_path(messagerelation) %></td>
+    <td><%= link_to 'Destroy', messagerelation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Messagerelation', new_messagerelation_path %>
