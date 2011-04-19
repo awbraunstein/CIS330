@@ -1,9 +1,3 @@
-/**************************************************************
-   AUTHOR:  Pat Heard (fullahead.org)
-   DATE:    2006.09.12
-   PURPOSE: Styles the page for print.  Techniques adopted from
-            http://www.alistapart.com/articles/goingtoprint/
- **************************************************************/
 
 body {
   font: 400 12pt verdana, arial, sans-serif;
