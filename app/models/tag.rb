@@ -14,4 +14,15 @@ class Tag < ActiveRecord::Base
   has_many :tweets, :through => :tagmentions
 
   validates_uniqueness_of :tag
+
+  def self.search(term)
+    tags = find(:all, :conditions => ['tag LIKE ?', "%" + term + "%"])
+    tag_tweets = []
+    tags.each do |t|
+      t.tagmentions.each do |m|
+        tag_tweets << m.tweet
+      end
+    end
+    return tag_tweets.flatten.sort_by {|t| t.created_at}.reverse
+  end
 end

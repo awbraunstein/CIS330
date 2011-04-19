@@ -162,5 +162,19 @@ class User < ActiveRecord::Base
       return user
     end
   end
-  
+
+  def self.search(term)
+    users = find(:all, :conditions => ['username LIKE ?', "%" + term + "%"])
+  end
+
+  def self.search_mentions(term)
+    users = find(:all, :conditions => ['username LIKE ?', "%" + term + "%"])
+    mention_tweets = []
+    users.each do |u|
+      u.mentions.each do |m|
+        mention_tweets << m.tweet
+      end
+    end
+    return mention_tweets.flatten.sort_by{|t| t.created_at}.reverse
+  end
 end
