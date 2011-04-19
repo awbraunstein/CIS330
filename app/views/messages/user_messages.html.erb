@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= link_to "New Message", :controller => "messages", :action => "new" %>
+</p>
+<p>
+  <b>
+    Unread Messages:
+  </b>
+  <% if @unread_messages.count == 0 %>
+  No unread Messages
+  <% else %>
+  <% @unread_messages.each do |m| %>
+  <li>
+    <td>
+      <%= m.subject %>
+    </td>
+    <td>
+      <%= m.from %>
+    </td>
+  </li>
+  <% end %>
+  <% end %>
+</p>
+<p>
+  <b>
+    Read Messages:
+  </b>
+  <% if @unread_messages.count == 0 %>
+  Read Messages
+  <% else %>
+  <% @read_messages.each do |m| %>
+  <li>
+    <td>
+      <%= m.subject %>
+    </td>
+    <td>
+      <%= m.from %>
+    </td>
+  </li>
+  <% end %>
+  <% end %>
+</p>
+
+<p>
+  <b>
+    Sent Messages:
+  </b>
+  <% if @sent_messages.count == 0 %>
+  No sent Messages
+  <% else %>
+  <% @sent_messages.each do |m| %>
+  <li>
+    <td>
+      <%= m.subject %>
+    </td>
+    <td>
+      <%= m.to %>
+    </td>
+  </li>
+  <% end %>
+  <% end %>
+</p>
+

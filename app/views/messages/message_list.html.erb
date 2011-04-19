@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>
+    Unread Messages:
+  </b>
+  <% if @unread_messages.count == 0 %>
+  No unread Messages
+  <% else %>
+  <% @unread_messages.each do |m| %>
+  <li>
+    <td>
+      <%= m.subject %>
+    </td>
+    <td>
+      <%= m.from %>
+    </td>
+  </li>
+</p>
+<p>
+  <b>
+    Read Messages:
+  </b>
+  <% if @unread_messages.count == 0 %>
+  Read Messages
+  <% else %>
+  <% @read_messages.each do |m| %>
+  <li>
+    <td>
+      <%= m.subject %>
+    </td>
+    <td>
+      <%= m.from %>
+    </td>
+  </li>
+</p>
+
+<p>
+  <b>
+    Sent Messages:
+  </b>
+  <% if @sent_messages.count == 0 %>
+  No unread Messages
+  <% else %>
+  <% @sent_messages.each do |m| %>
+  <li>
+    <td>
+      <%= m.subject %>
+    </td>
+    <td>
+      <%= m.to %>
+    </td>
+  </li>
+</p>
+
