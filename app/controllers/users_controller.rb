@@ -2,12 +2,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.xml
   def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @users }
-    end
+     @users = User.search(params[:search])
   end
 
   # GET /users/1
@@ -109,6 +104,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def favorites
+    @tweet = current_user.favorites
+    respond_to do |format|
+      format.html # favorites.html.erb
+    end
+  end
+  
+
   def requests_page
     if current_user.nil?
       redirect_to root_path
@@ -121,7 +124,6 @@ class UsersController < ApplicationController
       format.html # requests_page.html.erb
     end
   end
-
   
   # GET /users/new
   # GET /users/new.xml

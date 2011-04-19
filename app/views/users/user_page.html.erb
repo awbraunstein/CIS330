@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to "mentions", mention_list_url(@user.id) %>
+<%= link_to "mentions", mention_list_url(@user.id) %>|
+<%= link_to "Search Users", users_path%>|
+<%= link_to "Search Tags", tags_path%>
 <% if current_user == @user %>
 |<%= link_to "messages", user_messages_url %>|
 <%= link_to "suggestions", suggestions_url %>|
-<%= link_to "lists", user_lists_url %>
+<%= link_to "lists", user_lists_url %>|
+<%= link_to "favorites", favorites_url %>
+
 <h3>
 <p>
 <%= link_to "requests", requests_url  %>
@@ -73,11 +77,12 @@
     <% if current_user == @user %>
     <% @alltweets.each do |t| %>
     <li>
-      <h4> <td><%= t.body %></td>
-        <td><%= t.updated_at.to_date %></td>
+      <h4> <td><%= t.body %></td></br>
+        <td><%= t.updated_at.to_date %></td></br>
         <td><%= link_to t.user.username, user_tweets_url(:username => t.user.username)%></td>
         <% if current_user == t.user %></br>
         <td><%= link_to "Delete Tweet", t, :confirm => 'Are you sure?', :method => :delete %></td></h4>
+      
       <% end %>
     </li>
     <% end %>
@@ -85,8 +90,8 @@
     <% @tweets.each do |t| %>
     <li>
       <h4>
-        <td><%= t.body %></td>
-        <td><%= t.updated_at.to_date %></td>
+        <td><%= t.body %></td></br>
+        <td><%= t.updated_at.to_date %></td></br>
         <td><%= link_to t.user.username, user_tweets_url(:username => t.user.username)%></td>
       </h4>
     </li>

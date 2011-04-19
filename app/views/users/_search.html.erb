@@ -6,20 +6,3 @@
  <%= link_to_function "Clear", "$('search_field').clear()" %>
  <% end %> 
 </p>
-Results
-<% if @users.nil? && @tags.nil? %>
-<p>
-  <ul>
-    <b>Users:</b>
-    <% @users.each do |u| %>
-    <li><%= link_to user.username, user_tweets_url(u)  %></li>
-    <% end %>
-  </ul>
-  <ul>
-    <b>Tags:</b>
-    <% @tags.each do |t| %>
-    <li><%= t.body %></li>
-    <% end %>
-  </ul>
-</p>
-<% end %>

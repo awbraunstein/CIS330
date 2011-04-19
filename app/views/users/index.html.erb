@@ -1,43 +1,15 @@
-<h1>Listing users</h1>
-
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Firstname</th>
-    <th>Lastname</th>
-    <th>Email</th>
-    <th>Password</th>
-    <th>Privacy</th>
-    <th>Webpage</th>
-    <th>Time zone</th>
-    <th>Bio</th>
-    <th>Location</th>
-    <th>Language</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<p>
+  <b>Search Users:</b> 
+ <% form_tag users_path  :method => 'get' do %>
+ <%= text_field_tag :search, params[:search] %>
+ <%= submit_tag "Search", :username => nil %> 
+ <% end %> 
+</p>
 
 <% @users.each do |user| %>
-  <tr>
-    <td><%= user.username %></td>
-    <td><%= user.firstname %></td>
-    <td><%= user.lastname %></td>
-    <td><%= user.email %></td>
-    <td><%= user.password %></td>
-    <td><%= user.privacy %></td>
-    <td><%= user.webpage %></td>
-    <td><%= user.time_zone %></td>
-    <td><%= user.bio %></td>
-    <td><%= user.location %></td>
-    <td><%= user.language %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li>
+    <td><%= link_to user.username, user_tweets_url %></td>
+  </li>
 <% end %>
-</table>
 
-<br />
 
-<%= link_to 'New User', new_user_path %>

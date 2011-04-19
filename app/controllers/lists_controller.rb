@@ -22,20 +22,9 @@ class ListsController < ApplicationController
   end
 
   def user_lists
-    @admin_lists = []
+    @admin_lists = List.find_all_by_creator_id(current_user.id)
     @lists = current_user.followslists
-    @all = List.all
-    @pub = []
-    @all.each do |l|
-      if l.creator_id == current_user.id
-        @admin_lists << l
-      end
-    end
-    @all.each do |l|
-      if !l.private
-        @pub << l
-      end
-    end
+    @pub = List.find_all_by_private(false)
 
     respond_to do |format|
       format.html # user_lists.html.erb

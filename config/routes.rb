@@ -40,6 +40,8 @@ Twitter::Application.routes.draw do
   match "suggestions" => "users#suggestions", :as => "suggestions"
   match "search/:string" => "users#search", :as => "search"
   match "user_lists" => "lists#user_lists", :as => "user_lists"
+  match "favorites" => "users#favorites", :as => "favorites"
+  match "tweet/retweet/:body" => "tweets#retweet", :as => "retweet"
   get "home/index"
   
   # The priority is based upon order of creation:

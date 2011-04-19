@@ -53,6 +53,25 @@ class TweetsController < ApplicationController
     end
   end
 
+  def retweet
+    @tweet = Tweet.new
+    @tweet.user_id = current_user.id
+    @tweet.body = params[:body]
+    respond_to do |format|
+      if @tweet.save
+        format.html { redirect_to(:back, :notice => 'Tweet was successfully created.') }
+        format.xml  { render :xml => @tweet, :status => :created, :location => @tweet }
+      else
+        format.html { redirect_to(:back, :notice => 'Tweet was invalid.') }
+        format.xml  { render :xml => @tweet.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def reply
+  end
+  
+
   # PUT /tweets/1
   # PUT /tweets/1.xml
   def update

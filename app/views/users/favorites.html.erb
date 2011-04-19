@@ -1,0 +1,8 @@
+<p>
+<b>Favorite tweet:</b>
+<% if !@tweet.nil? %>
+<td><%= @tweet.body %></td>
+<td><%= @tweet.updated_at.to_date %></td>
+<td><%= link_to @tweet.user.username, user_tweets_url(:username => @tweet.user.username)%></td>
+<% end %>
+</p>
