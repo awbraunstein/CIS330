@@ -32,6 +32,7 @@ Twitter::Application.routes.draw do
   match ":id/relationships" => "users#relationships", :as => "user_relationships"
   match ":id/follow" => "users#follow_user", :as => "follow_user"
   match ":id/unfollow" => "users#unfollow_user", :as => "unfollow_user"
+  match ":id/approve" => "users#approve_user", :as => "approve_user"
   get "home/index"
   
   # The priority is based upon order of creation:

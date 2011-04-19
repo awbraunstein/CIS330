@@ -36,6 +36,18 @@ class UsersController < ApplicationController
       format.xml {render :xml => @user }
     end
   end
+  
+  def approve_user
+    @user = User.find_by_username(params[:id])
+    if @user.nil?
+      @user = User.find(params[:id])
+    end
+    current_user.follow!(@user)
+    respond_to do |format|
+      format.html {redirect_to user_tweets_url(@user.username)} 
+      format.xml  { render :xml => @user}
+    end
+  end
 
   def follow_user
     @user = User.find_by_username(params[:id])

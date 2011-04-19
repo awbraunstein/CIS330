@@ -24,10 +24,12 @@
   <% else %>
   <ul>
     <% @followrequests.each do |r| %>
-    <li><%= r.username %> Has not yet approved your request.</li>
+    <li><%= r.username %> has not yet approved your request.</li>
+   | <%= link_to "approve user", approve_user_url(:id=>r.id) %>
     <% end %>
   </ul>
   <% end %>
   
 </p>
+
 
