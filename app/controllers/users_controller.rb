@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     end
     current_user.follow!(@user)
     respond_to do |format|
-      format.html {redirect_to user_tweets_url(@user)} 
+      format.html {redirect_to user_tweets_url(@user.username)} 
       format.xml  { render :xml => @user}
     end
   end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     end
     current_user.unfollow!(@user)
     respond_to do |format|
-      format.html {redirect_to user_tweets_url(@user)}
+      format.html {redirect_to user_tweets_url(@user.username)}
       format.xml  { render :xml => @user}
     end
   end

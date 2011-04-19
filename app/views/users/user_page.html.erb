@@ -24,9 +24,9 @@
   <p>
     <% if current_user != @user %>
     <% if !current_user.follows?(@user) %>
-    <%= link_to "Follow User", follow_user_path(@user) %>
+    <%= link_to "follow user", follow_user_url(:id=>@user.id) %>
     <% else %>
-    <%= link_to "Unfollow User", unfollow_user_path(@user)  %>
+    <%= link_to "unfollow user", unfollow_user_url(:id=>@user.id) %>
     <% end %>
     <% end %>
   </p>

@@ -19,12 +19,7 @@ Twitter::Application.routes.draw do
 
   resources :tweets
 
-  resources :users do
-    member do
-      get 'unfollow_user'
-      get 'follow_user'
-    end
-  end
+  resources :users
 
   resources :sessions, :only => [:new, :create, :destroy]
   
@@ -35,6 +30,8 @@ Twitter::Application.routes.draw do
   match ":id/profile" => "users#show", :as => "user_profile"
   match "requests" => "users#requests_page"
   match ":id/relationships" => "users#relationships", :as => "user_relationships"
+  match ":id/follow" => "users#follow_user", :as => "follow_user"
+  match ":id/unfollow" => "users#unfollow_user", :as => "unfollow_user"
   get "home/index"
   
   # The priority is based upon order of creation:
