@@ -9695,3 +9695,75 @@ SQLite3::SQLException: no such column: tag: SELECT "users".* FROM "users" WHERE 
   [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
   [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mFavoritetweet Load (0.2ms)[0m  SELECT "favoritetweets".* FROM "favoritetweets" WHERE ("favoritetweets".user_id = 1)
+SQLite3::SQLException: no such table: favoritetweets: SELECT "favoritetweets".* FROM "favoritetweets" WHERE ("favoritetweets".user_id = 1)
+  [1m[36mSQL (0.9ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateUsers (20110307215224)
+Migrating to CreateTweets (20110307224716)
+Migrating to CreateMessages (20110318001222)
+Migrating to AddPasswordToUsers (20110318035821)
+Migrating to CreateFollowsusers (20110407223157)
+Migrating to CreateMentions (20110408014416)
+Migrating to CreateTags (20110408041546)
+Migrating to CreateTagmentions (20110408041633)
+Migrating to CreateLists (20110408190956)
+Migrating to CreateFollowslists (20110408191053)
+Migrating to CreateInlists (20110408191113)
+Migrating to CreateMessagerelations (20110418222911)
+Migrating to DropMessagesFromTo (20110418223441)
+Migrating to CreateFavoritetweets (20110419060702)
+  [1m[35mSQL (0.0ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE TABLE "favoritetweets" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tweet_id" integer, "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20110419060702')
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations"
+  [1m[36mSQL (0.2ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("favoritetweets")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("followslists")[0m
+  [1m[35mSQL (0.1ms)[0m  PRAGMA index_list("followsusers")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_info('index_followsusers_on_follower_id_and_following_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_info('index_followsusers_on_following_id')
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_info('index_followsusers_on_follower_id')[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("inlists")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("lists")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("mentions")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("messagerelations")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("messages")
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("tagmentions")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tags")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("tweets")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("users")
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mFavoritetweet Load (0.2ms)[0m  SELECT "favoritetweets".* FROM "favoritetweets" WHERE ("favoritetweets".user_id = 1)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" INNER JOIN "favoritetweets" ON "tweets".favoritetweet_id = "favoritetweets".id WHERE (("favoritetweets".user_id = 1))[0m
+SQLite3::SQLException: no such column: tweets.favoritetweet_id: SELECT "tweets".* FROM "tweets" INNER JOIN "favoritetweets" ON "tweets".favoritetweet_id = "favoritetweets".id WHERE (("favoritetweets".user_id = 1))
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "favoritetweets" ON "users".id = "favoritetweets".user_id WHERE (("favoritetweets".user_id = 1))[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "favoritetweets" ON "users".id = "favoritetweets".user_id WHERE (("favoritetweets".user_id = 1))[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" LIMIT 1
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets" LIMIT 1[0m
+  [1m[35mTweet Load (0.5ms)[0m  SELECT "tweets".* FROM "tweets" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "favoritetweets" ON "users".id = "favoritetweets".user_id WHERE (("favoritetweets".tweet_id = 1))[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" INNER JOIN "favoritetweets" ON "tweets".id = "favoritetweets".tweet_id WHERE (("favoritetweets".user_id = 1))[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mTweet Load (0.3ms)[0m  [1mSELECT "tweets".* FROM "tweets" INNER JOIN "favoritetweets" ON "tweets".id = "favoritetweets".tweet_id WHERE (("favoritetweets".user_id = 1))[0m
+  [1m[35mTweet Load (0.3ms)[0m  SELECT "tweets".* FROM "tweets" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "favoritetweets" ON "users".id = "favoritetweets".user_id WHERE (("favoritetweets".tweet_id = 1))[0m
