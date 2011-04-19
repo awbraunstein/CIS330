@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tweet:</b>
+  <%= @favoritetweet.tweet_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @favoritetweet.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_favoritetweet_path(@favoritetweet) %> |
+<%= link_to 'Back', favoritetweets_path %>
