@@ -41,7 +41,7 @@ class MessagerelationsController < ApplicationController
   # POST /messagerelations.xml
   def create
     @messagerelation = Messagerelation.new(params[:messagerelation])
-    @messagerelation.from_id = current_user
+    @messagerelation.from_id = current_user.id
     respond_to do |format|
       if @messagerelation.save
         format.html { redirect_to(user_messages_url) }
