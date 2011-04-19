@@ -116,7 +116,14 @@ class User < ActiveRecord::Base
     end
     return false
   end
-
+  
+  def approve!(user)
+    rel = usersfollow.find_by_follower_id(user.id)
+    rel.approved = true
+    rel.save
+  end
+    
+  
   def follow!(user)
     if follows?(user) || requested?(user)
       return
