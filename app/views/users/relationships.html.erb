@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Username:</b>
+  <%= @user.username %>
+</p>
+<p>
+  <b>Followers:</b>
+  <% if @followers.count == 0 %>
+  User has no followers.
+  <% else %>
+  <% @followers.each do |t| %>
+  <li>
+    <h4>
+      <td><%= link_to t.username, user_tweets_url(:username => t.username)%></td>
+    </h4>
+    <% end %>
+  </li>
+  <% end %>
+</p>
+<p>
+  <b>Following:</b>
+  <% if @following.count == 0 %>
+  User is following no one.
+  <% else %>
+  <% @following.each do |t| %>
+  <li>
+    <h4>
+      <td><%= link_to t.username, user_tweets_url(:username =>t.username)%></td>
+    </h4>
+  </li>
+  <% end %>
+  <% end %>  
+</p>
