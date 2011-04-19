@@ -23,7 +23,9 @@
   </p>
   <p>
     <% if current_user != @user %>
-    <% if !current_user.follows?(@user) %>
+    <% if current_user.requested?(@user) %>
+    Waiting for approval
+    <% elsif !current_user.follows?(@user) %>
     <%= link_to "follow user", follow_user_url(:id=>@user.id) %>
     <% else %>
     <%= link_to "unfollow user", unfollow_user_url(:id=>@user.id) %>

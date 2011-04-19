@@ -11,7 +11,8 @@
   <% else %>
   <ul>
     <% @followerrequests.each do |r| %>
-    <li><%= r.username %> Would like to follow you!</li>
+    <li><%= r.username %> Would like to follow you!
+ | <%= link_to "approve user", approve_user_url(:id=>r.id) %></li>
     <% end %>
   </ul>
   <% end %>
@@ -24,10 +25,11 @@
   <% else %>
   <ul>
     <% @followrequests.each do |r| %>
-    <li><%= r.username %> Has not yet approved your request.</li>
+    <li><%= r.username %> has not yet approved your request.</li>
     <% end %>
   </ul>
   <% end %>
   
 </p>
+
 

@@ -27,6 +27,9 @@
   <li>
     <h4>
       <td><%= link_to t.username, user_tweets_url(:username =>t.username)%></td>
+      <% if @user == current_user %>
+      | <%= link_to "unfollow user", unfollow_user_url(:id=>t.id) %>
+      <% end %>
     </h4>
   </li>
   <% end %>
