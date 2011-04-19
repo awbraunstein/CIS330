@@ -1,12 +1,7 @@
 <p>
   <h3><b>Suggestions:</b></h3>
   <ul>
-    <% @suggestions.each do |s| %>
-    <li>
-      <h4> 
-        <td><%= link_to s.username, user_tweets_url(:username => s.username) %> has 
-          <%= current_user.common_following_count(s)%> mutual followers</td>
-    </li>
-    <% end %>
+    You should follow <%= link_to @suggestion.username, user_tweets_url(@suggestion) %>. 
+    You have <%= @mutual_followers %> common followers.
   </ul>
 </p>

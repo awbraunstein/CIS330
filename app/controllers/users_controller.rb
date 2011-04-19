@@ -24,12 +24,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = User.search(params[:string])
+    respond_to do |format|
+      format.xml  { render :xml => @user}
+    end
+  end
+
   def suggestions
     @user = current_user
-    @suggestions = @user.follow_suggestion
-    if suggestions.count == 0
-      @suggestions = []
-    end
+    @suggestion = @user.follow_suggestion
+    @mutual_followers = @user.common_following_count(@suggestion)
     respond_to do |format|
       format.html # suggestions.html.erb
       format.xml {render :xml => @user }
