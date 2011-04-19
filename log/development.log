@@ -9436,3 +9436,262 @@ SQLite3::SQLException: no such column: tag: SELECT "users".* FROM "users" WHERE 
   [1m[36mFollowsuser Load (0.1ms)[0m  [1mSELECT "followsusers"."id" FROM "followsusers" WHERE ("followsusers"."follower_id" = 1) AND ("followsusers"."following_id" = 4) AND ("followsusers".id <> 14) LIMIT 1[0m
   [1m[35mAREL (21.3ms)[0m  UPDATE "followsusers" SET "approved" = 't', "updated_at" = '2011-04-19 02:32:06.081275' WHERE ("followsusers"."id" = 14)
   [1m[36mFollowsuser Load (0.4ms)[0m  [1mSELECT "followsusers".* FROM "followsusers" WHERE ("followsusers"."following_id" = 4) LIMIT 1[0m
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (1.5ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (2.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (24.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 2) AND ((approved = 't')))[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 1) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".follower_id WHERE (("followsusers".following_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".*, "users"."id" FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't'))) AND ("users"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 4) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 1) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE ("users"."id" = 3) LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 3) AND ((approved = 't')))[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "followsusers" ON "users".id = "followsusers".following_id WHERE (("followsusers".follower_id = 2) AND ((approved = 't')))
