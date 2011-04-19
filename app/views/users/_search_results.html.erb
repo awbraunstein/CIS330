@@ -1,0 +1,13 @@
+<ul>
+   <b>Users:</b>
+  <% @users.each do |u| %>
+  <li><%= link_to user.username, 
+          :action => 'show', :id => grant.id  %></li>
+  <% end %>
+</ul>
+<ul>
+   <b>Tags:</b>
+  <% @tags.each do |t| %>
+  <li><%= t.body  %></li>
+  <% end %>
+</ul>
