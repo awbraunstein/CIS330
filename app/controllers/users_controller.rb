@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     if @user.nil?
       @user = User.find(params[:id])
     end
-    current_user.follow!(@user)
+    current_user.approve!(@user)
     respond_to do |format|
       format.html {redirect_to user_tweets_url(@user.username)} 
       format.xml  { render :xml => @user}
