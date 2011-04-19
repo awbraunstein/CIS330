@@ -9315,3 +9315,100 @@ Migrating to DropMessagesFromTo (20110418223441)
   [1m[36mMessage Load (0.2ms)[0m  [1mSELECT "messages".* FROM "messages" INNER JOIN "messagerelations" ON "messages".id = "messagerelations".message_id WHERE (("messagerelations".to_id = 1))[0m
   [1m[35mMessage Load (0.7ms)[0m  SELECT "messages".* FROM "messages" LIMIT 1
   [1m[36mMessagerelation Load (0.2ms)[0m  [1mSELECT "messagerelations".* FROM "messagerelations" WHERE ("messagerelations".message_id = 1) LIMIT 1[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%hi%')
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (tag LIKE '%hi%')[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%hi%')
+  [1m[36mTagmention Load (0.2ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 2)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%hi%')
+  [1m[36mTagmention Load (0.1ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 4)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" LIMIT 1[0m
+  [1m[35mTagmention Load (0.2ms)[0m  SELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')[0m
+  [1m[35mTagmention Load (0.2ms)[0m  SELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')
+  [1m[36mTagmention Load (0.2ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')
+  [1m[36mTagmention Load (0.2ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')
+  [1m[36mTagmention Load (0.2ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')
+  [1m[36mTagmention Load (0.2ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')
+  [1m[36mTagmention Load (0.2ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)[0m
+  [1m[35mTagmention Load (0.4ms)[0m  SELECT "tagmentions".* FROM "tagmentions" LIMIT 1
+  [1m[36mTagmention Load (0.3ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" LIMIT 1[0m
+  [1m[35mTagmention Load (0.3ms)[0m  SELECT "tagmentions".* FROM "tagmentions" LIMIT 1
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')
+  [1m[36mTagmention Load (0.2ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" LIMIT 1[0m
+  [1m[35mTag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" LIMIT 1
+  [1m[36mTagmention Load (0.1ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" LIMIT 1
+  [1m[36mTagmention Load (0.2ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1) LIMIT 1[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')[0m
+  [1m[35mTagmention Load (0.2ms)[0m  SELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')
+  [1m[36mTagmention Load (0.2ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')[0m
+  [1m[35mTagmention Load (0.2ms)[0m  SELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 30) LIMIT 1
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 31) LIMIT 1[0m
+  [1m[35mTag Load (0.6ms)[0m  SELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')
+  [1m[36mTagmention Load (0.3ms)[0m  [1mSELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 30) LIMIT 1[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 31) LIMIT 1
+  [1m[36mTag Load (0.6ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (tag LIKE '%dag%')[0m
+  [1m[35mTagmention Load (0.2ms)[0m  SELECT "tagmentions".* FROM "tagmentions" WHERE ("tagmentions".tag_id = 1)
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 1) LIMIT 1[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 30) LIMIT 1
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 31) LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE (tag LIKE '%t%')
+SQLite3::SQLException: no such column: tag: SELECT "users".* FROM "users" WHERE (tag LIKE '%t%')
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE (tag LIKE '%t%')[0m
+SQLite3::SQLException: no such column: tag: SELECT "users".* FROM "users" WHERE (tag LIKE '%t%')
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" WHERE (username LIKE '%t%')
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE (username LIKE '%at%')[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mMention Load (0.3ms)[0m  [1mSELECT "mentions".* FROM "mentions" WHERE ("mentions".user_id = 1)[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mMention Load (0.2ms)[0m  [1mSELECT "mentions".* FROM "mentions" WHERE ("mentions".user_id = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mMention Load (0.3ms)[0m  [1mSELECT "mentions".* FROM "mentions" WHERE ("mentions".user_id = 1) LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" LIMIT 1
+  [1m[36mMention Load (0.2ms)[0m  [1mSELECT "mentions".* FROM "mentions" WHERE ("mentions".user_id = 1) LIMIT 1[0m
+  [1m[35mTweet Load (0.2ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 2) LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE (username LIKE '%at%')[0m
+  [1m[35mMention Load (0.3ms)[0m  SELECT "mentions".* FROM "mentions" WHERE ("mentions".user_id = 1)
+  [1m[36mTweet Load (0.2ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 2) LIMIT 1[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 11) LIMIT 1
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 12) LIMIT 1[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 14) LIMIT 1
+  [1m[36mMention Load (0.2ms)[0m  [1mSELECT "mentions".* FROM "mentions" WHERE ("mentions".user_id = 4)[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 6) LIMIT 1
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 13) LIMIT 1[0m
+  [1m[35mTweet Load (0.1ms)[0m  SELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 14) LIMIT 1
+  [1m[36mTweet Load (0.1ms)[0m  [1mSELECT "tweets".* FROM "tweets" WHERE ("tweets"."id" = 22) LIMIT 1[0m
