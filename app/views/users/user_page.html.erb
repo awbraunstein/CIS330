@@ -21,6 +21,15 @@
     <b>Tweets:</b>
     <%= @user.tweets.count %>
   </p>
+  <p>
+    <% if current_user != @user %>
+    <% if !current_user.follows?(@user) %>
+    <%= link_to "Follow User", follow_user_path(@user) %>
+    <% else %>
+    <%= link_to "Unfollow User", unfollow_user_path(@user)  %>
+    <% end %>
+    <% end %>
+  </p>
   <%= link_to "See Relationships", user_relationships_url(@user.id) %>
   <p>
   </p>
@@ -68,12 +77,12 @@
     <% @tweets.each do |t| %>
     <li>
       <h4>
-      <td><%= t.body %></td>
-      <td><%= t.updated_at %></td>
-      <td><%= link_to t.user.username, user_tweets_url(:username => t.user.username)%></td>
-      <% if current_user == t.user %></br>
-      <td><%= link_to "Delete Tweet", t, :confirm => 'Are you sure?', :method => :delete %></td>
-</h4>
+        <td><%= t.body %></td>
+        <td><%= t.updated_at %></td>
+        <td><%= link_to t.user.username, user_tweets_url(:username => t.user.username)%></td>
+        <% if current_user == t.user %></br>
+        <td><%= link_to "Delete Tweet", t, :confirm => 'Are you sure?', :method => :delete %></td>
+      </h4>
       <% end %>
     </li>
     <% end %>

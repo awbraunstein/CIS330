@@ -19,7 +19,12 @@ Twitter::Application.routes.draw do
 
   resources :tweets
 
-  resources :users
+  resources :users do
+    member do
+      get 'unfollow_user'
+      get 'follow_user'
+    end
+  end
 
   resources :sessions, :only => [:new, :create, :destroy]
   
