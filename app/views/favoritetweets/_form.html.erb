@@ -1,0 +1,25 @@
+<%= form_for(@favoritetweet) do |f| %>
+  <% if @favoritetweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@favoritetweet.errors.count, "error") %> prohibited this favoritetweet from being saved:</h2>
+
+      <ul>
+      <% @favoritetweet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tweet_id %><br />
+    <%= f.text_field :tweet_id %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

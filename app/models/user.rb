@@ -78,6 +78,9 @@ class User < ActiveRecord::Base
            :foreign_key => :to_id, :dependent => :destroy
   has_many :received_messages, :through => :messagerelation_receivers,
            :source => :message
+
+  has_many :favoritetweets, :dependent => :destroy
+  has_many :favorites, :through => :favoritetweets, :source => :tweet
   
   attr_accessible :username, :firstname, :lastname, :email, :privacy, :webpage
   attr_accessible :time_zone, :bio, :location, :language, :password, :password_confirmation

@@ -12,12 +12,15 @@
 
 class Tweet < ActiveRecord::Base
   belongs_to :user
-
+    
   has_many :mentions, :dependent => :destroy
   has_many :users, :through => :mentions
   
   has_many :tagmentions, :dependent => :destroy
   has_many :tags, :through => :tagmentions
+
+  has_many :favoritetweets, :dependent => :destroy
+  has_many :favorites, :through => :favoritetweets, :source => :user
   
   attr_accessible :body
   attr_readonly :user_id
