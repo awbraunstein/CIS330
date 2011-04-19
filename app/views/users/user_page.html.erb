@@ -2,8 +2,9 @@
 
 <%= link_to "mentions", mention_list_url(@user.id) %>
 <% if current_user == @user %>
-<%= link_to "messages", user_messages_url %>
-<%= link_to "Suggestions", suggestions_url %>
+|<%= link_to "messages", user_messages_url %>|
+<%= link_to "suggestions", suggestions_url %>|
+<%= link_to "lists", user_lists_url %>
 <h3>
 <p>
 <%= link_to "requests", requests_url  %>

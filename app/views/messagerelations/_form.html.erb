@@ -10,23 +10,10 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :message_id %><br />
-    <%= f.text_field :message_id %>
-  </div>
-  <div class="field">
-    <%= f.label :from_id %><br />
-    <%= f.text_field :from_id %>
-  </div>
+<td><%= f.hidden_field :message_id, :value => @message_id %></td>
   <div class="field">
     <%= f.label :to_id %><br />
     <%= f.text_field :to_id %>
-  </div>
-  <div class="field">
-    <%= f.label :read %><br />
-    <%= f.check_box :read %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

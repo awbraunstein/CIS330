@@ -25,7 +25,7 @@ class MessagerelationsController < ApplicationController
   # GET /messagerelations/new.xml
   def new
     @messagerelation = Messagerelation.new
-
+    @message_id = params[:id]
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @messagerelation }
@@ -41,10 +41,10 @@ class MessagerelationsController < ApplicationController
   # POST /messagerelations.xml
   def create
     @messagerelation = Messagerelation.new(params[:messagerelation])
-
+    @messagerelation.from_id = current_user
     respond_to do |format|
       if @messagerelation.save
-        format.html { redirect_to(@messagerelation, :notice => 'Messagerelation was successfully created.') }
+        format.html { redirect_to(user_messages_url) }
         format.xml  { render :xml => @messagerelation, :status => :created, :location => @messagerelation }
       else
         format.html { render :action => "new" }

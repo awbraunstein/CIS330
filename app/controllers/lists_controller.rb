@@ -21,6 +21,28 @@ class ListsController < ApplicationController
     end
   end
 
+  def user_lists
+    @admin_lists = []
+    @lists = current_user.followslists
+    @all = List.all
+    @pub = []
+    @all.each do |l|
+      if l.creator_id == current_user.id
+        @admin_lists << l
+      end
+    end
+    @all.each do |l|
+      if !l.private
+        @pub << l
+      end
+    end
+
+    respond_to do |format|
+      format.html # user_lists.html.erb
+      format.xml  { render :xml => @list }
+    end
+  end
+  
   # GET /lists/new
   # GET /lists/new.xml
   def new
@@ -44,7 +66,7 @@ class ListsController < ApplicationController
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to(@list, :notice => 'List was successfully created.') }
+        format.html { redirect_to(user_lists_url, :notice => 'List was successfully created.') }
         format.xml  { render :xml => @list, :status => :created, :location => @list }
       else
         format.html { render :action => "new" }

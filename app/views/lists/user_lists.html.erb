@@ -1,0 +1,25 @@
+<p>
+  <%= link_to "New List", :controller => "lists", :action => "new" %>
+</p>
+<% if !@admin_lists.count == 0 %>
+<p>
+  <b>
+    Lists you are administrate
+  </b>
+  <% @admin_lists.each do |l| %>
+  <li>
+    <td> <%= l.name %></td>
+  </li>
+  <% end %>
+</p>
+<% end %>
+<% if !@pub.count == 0 %>
+<p>
+  <b>Public Lists:</b>
+  <% @pub.each do |l| %>
+  <li>
+    <td> <%= l.name %></td>
+  </li>
+  <% end %>
+</p>
+<% end %>

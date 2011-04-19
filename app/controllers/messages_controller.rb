@@ -14,7 +14,9 @@ class MessagesController < ApplicationController
   # GET /messages/1.xml
   def show
     @message = Message.find(params[:id])
-
+    @temp = Messagerelation.find_by_message_id(@message.id)
+    @temp.read=true
+    @temp.save
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @message }
@@ -41,11 +43,9 @@ class MessagesController < ApplicationController
   # POST /messages.xml
   def create
     @message = Message.new(params[:message])
-    @message.messagerelation = Messagerelation.new(params[:messagerelation])
-    @messahe.messagerelation.from = current_user
     respond_to do |format|
-      if @message.save && @message.messagerelation.save
-        format.html { redirect_to(@message, :notice => 'Message was successfully created.') }
+      if @message.save
+        format.html { redirect_to(:controller => "messagerelations", :action => "new", :id => @message.id) }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,8 @@ class MessagesController < ApplicationController
     @unread_messages = []
     @read_messages = []
     @received_messages.each do |m|
-      if !m.read
+      @temp = Messagerelation.find_by_message_id(m.id)
+      if !@temp.read
         @unread_messages << m
       else
         @read_messages << m

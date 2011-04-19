@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <%= link_to "New Message", :controller => "messages", :action => "new" %>
 </p>
@@ -13,10 +12,10 @@
   <% @unread_messages.each do |m| %>
   <li>
     <td>
-      <%= m.subject %>
+      Subject: <%= link_to m.subject, m %></br>
     </td>
     <td>
-      <%= m.from %>
+      From: <%= m.from.username %>
     </td>
   </li>
   <% end %>
@@ -26,16 +25,16 @@
   <b>
     Read Messages:
   </b>
-  <% if @unread_messages.count == 0 %>
-  Read Messages
+  <% if @read_messages.count == 0 %>
+ No read Messages
   <% else %>
   <% @read_messages.each do |m| %>
   <li>
     <td>
-      <%= m.subject %>
+     Subject: <%= link_to m.subject, m %></br>
     </td>
     <td>
-      <%= m.from %>
+      From: <%= m.from.username %>
     </td>
   </li>
   <% end %>
@@ -52,10 +51,10 @@
   <% @sent_messages.each do |m| %>
   <li>
     <td>
-      <%= m.subject %>
+      Subject: <%= m.subject %></br>
     </td>
     <td>
-      <%= m.to %>
+      From: <%= m.to.username %>
     </td>
   </li>
   <% end %>
