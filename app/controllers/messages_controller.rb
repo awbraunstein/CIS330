@@ -41,9 +41,10 @@ class MessagesController < ApplicationController
   # POST /messages.xml
   def create
     @message = Message.new(params[:message])
-
+    @message.messagerelation = Messagerelation.new(params[:messagerelation])
+    @messahe.messagerelation.from = current_user
     respond_to do |format|
-      if @message.save
+      if @message.save && @message.messagerelation.save
         format.html { redirect_to(@message, :notice => 'Message was successfully created.') }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
       else
@@ -53,6 +54,25 @@ class MessagesController < ApplicationController
     end
   end
 
+  def user_messages
+    @received_messages = current_user.received_messages
+    @sent_messages = current_user.sent_messages
+    @unread_messages = []
+    @read_messages = []
+    @received_messages.each do |m|
+      if !m.read
+        @unread_messages << m
+      else
+        @read_messages << m
+      end
+    end
+    respond_to do |format|
+      format.html # user_messages.html.erb
+      format.xml  { render :xml => @message }
+    end
+    
+  end
+  
   # PUT /messages/1
   # PUT /messages/1.xml
   def update

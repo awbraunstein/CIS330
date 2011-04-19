@@ -24,6 +24,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def suggestions
+    @followers = @user.followers
+    @following = @user.following
+    respond_to do |format|
+      format.html # relationships.html.erb
+      format.xml {render :xml => @user }
+  end
   def relationships
     @user = User.find_by_username(params[:id])
     if @user.nil?

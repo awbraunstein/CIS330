@@ -32,6 +32,22 @@ class MentionsController < ApplicationController
     end
   end
 
+  def mention_list
+    @user = User.find_by_username(params[:id])
+    if @user.nil?
+      @user = User.find(params[:id])
+    end
+    @mentions = Mention.find_all_by_user_id(@user.id)
+    @tweets = []
+    @mentions.each do |m|
+      @temp = Tweet.find(m.tweet_id)
+      @tweets << @temp
+   end
+    respond_to do |format|
+      format.html # mention_list.html.erb
+      format.xml  { render :xml => @mention }
+    end
+  end
   # GET /mentions/1/edit
   def edit
     @mention = Mention.find(params[:id])
