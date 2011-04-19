@@ -150,6 +150,20 @@ class User < ActiveRecord::Base
     return all_tweets.sort_by { |t| t.created_at }.reverse 
   end
 
+  def follow_suggestion
+    all_follow_follow = []
+    following.each do |u|
+      all_follow_follow << u.following
+    end
+    all_follow_follow = all_follow_follow.flatten
+    all_follow_follow.delete(self)
+    all_follow_follow.delete_if{|u| following.include?(u)}
+    return all_follow_follow[rand(all_follow_follow.length)] unless all_follow_follow.empty?
+  end
+
+  def common_following_count(user)
+    return user.followers.delete_if{|u| !following.include?(u)}.count
+  end
   
   def self.encrypt_password
     print password
@@ -184,4 +198,5 @@ class User < ActiveRecord::Base
     end
     return mention_tweets.flatten.sort_by{|t| t.created_at}.reverse
   end
+  
 end
