@@ -29,7 +29,9 @@ class UsersController < ApplicationController
   def suggestions
     @user = current_user
     @suggestion = @user.follow_suggestion
-    @mutual_followers = @user.common_following_count(@suggestion)
+    if !@suggestion.nil?
+      @mutual_followers = @user.common_following_count(@suggestion)
+    end
     respond_to do |format|
       format.html # suggestions.html.erb
       format.xml {render :xml => @user }

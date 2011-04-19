@@ -1,7 +1,11 @@
 <p>
   <h3><b>Suggestions:</b></h3>
   <ul>
-    You should follow <%= link_to @suggestion.username, user_tweets_url(@suggestion) %>. 
+    <% if @suggestion.nil? %>
+    <b>You have no suggstions.</b>
+    <% else %>
+    You should follow <%= link_to @suggestion.username, user_tweets_url(@suggestion.username) %>. 
     You have <%= @mutual_followers %> common followers.
+    <% end %>
   </ul>
 </p>
